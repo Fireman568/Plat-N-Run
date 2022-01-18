@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - Spawn
+  - HorWall
+  - VerticalWall
+  - deathPlane
+  - RunWall
+  - Collectible 1
+  - Collectible 2
+  - Collectible 3
+  - Collectible 4
+  - Collectible 5
+  - Collectible 6
+  - destination1
+  - destination2
+  - destination3
+  - destination4
+  - destination5
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - GroundLayer
+  - Particle
+  - postProcessing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
