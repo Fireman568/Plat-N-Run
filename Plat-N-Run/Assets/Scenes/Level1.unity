@@ -6102,10 +6102,20 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1927753962}
+    - target: {fileID: 1528042464568990767, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.926
+      objectReference: {fileID: 0}
     - target: {fileID: 1528042465656063846, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: grav
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
@@ -6117,6 +6127,36 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 773436781}
+    - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: fallOffThreshhold
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: jumpingMultiplier
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: wallJumpMultiplier
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528042465656063864, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: m_Height
+      value: 2.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528042465656063864, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528042465656063864, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: m_MinMoveDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1528042465656063868, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
       propertyPath: m_RootOrder
