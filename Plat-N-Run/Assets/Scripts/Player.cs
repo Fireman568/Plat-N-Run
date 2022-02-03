@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     public float slidingCooldown;
     [Tooltip("This is the time since sliding")]
     public float timeSinceSlide;
+
     [Header("Falling variables")]
     [Tooltip("How much the downforce when in the air to bring the character back to the ground")]
     public float grav = -9.81f;
@@ -51,6 +52,10 @@ public class Player : MonoBehaviour
     public float currentVelY = 0f;
     [Tooltip("How fast we want the character to move downward over time. Goes with gravity")]
     public float fallingSpeed;
+    [Tooltip("The time since the player has fallen off a platform or been in the air")]
+    public float timeSinceFallenOff;
+    [Tooltip("The threshhold at which the player is allowed to still jump shortly after falling off of a platform to try and make it seem like they didnt miss a jumps")]
+    public float fallOffThreshhold;
     public int health = 3;
     public TextMeshProUGUI healthText;
 
@@ -273,10 +278,12 @@ public class Player : MonoBehaviour
         if (controller.isGrounded)
         {
             isGrounded = true;
+            timeSinceFallenOff = 0;
         }
         else
         {
             isGrounded = false;
+            timeSinceFallenOff += Time.deltaTime;
         }
     }
     public void Sprinting()
@@ -375,9 +382,17 @@ public class Player : MonoBehaviour
                         characterMovement += wallRunComp.GetWallJumpDirection() * wallJumpMultiplier;
                     }
                 }
+                //if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
+                //{
+                //    characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                //    characterMovement += Vector3.up * jumpingMultiplier;
+                //}
+
             }
+            
             else
             {
+                Debug.Log("Should be pulling character down");
                 if (wallRunComp == null || (wallRunComp != null && !wallRunComp.IsWallRunning()))
                 {
                     characterMovement += worldSpaceMoveInput * accelerationInAir * Time.deltaTime;
