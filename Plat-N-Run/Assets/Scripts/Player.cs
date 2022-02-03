@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     //again this is not completely my own. I am just using it as a guide to help me figure out what I need to do to get the desired effect.
     //Im not sure who did it or made the script, so credit goes toward the people on the unity Youtube channel for making this mechanic 
     //outlined in the video.
-
+    
     [Header("Movement")]
     [Tooltip("How fast the character will be able to move")]
     public float movementSpeed = 1f;
@@ -136,6 +136,7 @@ public class Player : MonoBehaviour
     
     public void Start()
     {
+       
         controller = GetComponent<CharacterController>();
         wallRunComp = GetComponent<WallRun>();
         initialPos = playerCamera.transform.localPosition;
