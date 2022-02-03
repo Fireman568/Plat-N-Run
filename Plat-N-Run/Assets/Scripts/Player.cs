@@ -391,6 +391,7 @@ public class Player : MonoBehaviour
             
             else
             {
+                Debug.Log("Should be pulling character down");
                 if (wallRunComp == null || (wallRunComp != null && !wallRunComp.IsWallRunning()))
                 {
                     characterMovement += worldSpaceMoveInput * accelerationInAir * Time.deltaTime;
