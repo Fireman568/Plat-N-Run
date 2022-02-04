@@ -371,6 +371,7 @@ public class Player : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || (wallRunComp != null && wallRunComp.IsWallRunning())))
                 {
+                    Debug.Log("I have jumped");
                     if (isGrounded)
                     {
                         characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
@@ -382,14 +383,21 @@ public class Player : MonoBehaviour
                         characterMovement += wallRunComp.GetWallJumpDirection() * wallJumpMultiplier;
                     }
                 }
-                //if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
+                //else if (!isGrounded && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
                 //{
+                //    Debug.Log("I have jumped within the threshhold");
                 //    characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
                 //    characterMovement += Vector3.up * jumpingMultiplier;
                 //}
 
             }
-            
+            else if(!isGrounded && Input.GetKeyDown(KeyCode.Space) && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
+            {
+                Debug.Log("I have jumped within the threshhold");
+                characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                characterMovement += Vector3.up * jumpingMultiplier;
+            }
+
             else
             {
                 Debug.Log("Should be pulling character down");

@@ -321,6 +321,8 @@ MonoBehaviour:
   grav: 20
   currentVelY: 0
   fallingSpeed: 1
+  timeSinceFallenOff: 0
+  fallOffThreshhold: 0.2
   health: 3
   healthText: {fileID: 0}
   sensX: 5
