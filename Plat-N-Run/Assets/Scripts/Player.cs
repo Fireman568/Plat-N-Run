@@ -59,6 +59,16 @@ public class Player : MonoBehaviour
     public int health = 3;
     public TextMeshProUGUI healthText;
 
+    [Header("Character Choice")]
+    [Tooltip("Default character check")]
+    public bool defaultGuy;
+    [Tooltip("Big Bulky Man")]
+    public bool bigBulkyMan;
+    [Tooltip("Agile girl")]
+    public bool agileGirl;
+    [Tooltip("Jumper man")]
+    public bool parkourMan;
+
     [Header("Camera")]
     [Tooltip("Sensitivity of the camera moving horizontally")]
     public float sensX;
@@ -141,7 +151,8 @@ public class Player : MonoBehaviour
     
     public void Start()
     {
-       
+        // in anticipation of the objective system and character selection, the bool for which character has been selected and which objectives need to be displayed will be set in here at the start of 
+        //each scene so the character character is chosen and its subsequent specific movement variables, as well as the specific objectives it needs
         controller = GetComponent<CharacterController>();
         wallRunComp = GetComponent<WallRun>();
         initialPos = playerCamera.transform.localPosition;
