@@ -21,6 +21,7 @@ TagManager:
   - destination3
   - destination4
   - destination5
+  - AgilePlayer
   layers:
   - Default
   - TransparentFX

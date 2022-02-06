@@ -128,5 +128,5 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   colliding: 0
   prevPos: {x: 0, y: 0, z: 0}
-  deathTime: 2.5
+  deathTime: 2
   startRotation: {x: 0, y: 0, z: 0, w: 0}

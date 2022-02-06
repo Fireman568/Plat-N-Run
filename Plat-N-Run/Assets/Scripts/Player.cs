@@ -92,6 +92,8 @@ public class Player : MonoBehaviour
     public float verticalWall1Time = 4f;
     [Tooltip("The time for the second vertical wall to keep the cooldown per wall")]
     public float verticalWall2Time = 4f;
+    [Tooltip("The time for the third wall for specifically the agile character to keep the cooldown per wall")]
+    public float verticalWall3Time = 4f;
     [Tooltip("The time for the horizontal wall to keep track of how long its been since the last hor wall has been placed")]
     public float horWallTime = 4f;
     [Tooltip("The condition for the second wall to be placed based on the first wall being placed. Gets changed in code, dont change in editor")]
@@ -157,6 +159,26 @@ public class Player : MonoBehaviour
         wallRunComp = GetComponent<WallRun>();
         initialPos = playerCamera.transform.localPosition;
         slidingPos = new Vector3(initialPos.x, initialPos.y - 1, initialPos.z);
+        defaultGuy = false;
+        bigBulkyMan = false;
+        agileGirl = false;
+        parkourMan = false;
+        if(gameObject.name == "Player")
+        {
+            defaultGuy = true;
+        }
+        else if(gameObject.name == "BigBulkyMan")
+        {
+            bigBulkyMan = true;
+        }
+        else if(gameObject.name == "AgileQuickGirl")
+        {
+            agileGirl = true;
+        }
+        else
+        {
+            parkourMan = true;
+        }
         if(sprintingVolume != null)
         {
             SetVolumeWeight(0);
@@ -219,6 +241,7 @@ public class Player : MonoBehaviour
         }
         verticalWall1Time += Time.deltaTime;
         verticalWall2Time += Time.deltaTime;
+        verticalWall3Time += Time.deltaTime;
         horWallTime += Time.deltaTime;
         timeSinceSlide += Time.deltaTime;
 
@@ -236,8 +259,16 @@ public class Player : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        SpawnVerticalWall();
-        SpawnHorizontalWall();
+        if (defaultGuy)
+        {
+            SpawnVerticalWall();
+            SpawnHorizontalWall();
+        }
+        else if (agileGirl)
+        {
+            SpawnVerticalWallAgile();
+            SpawnHorizontalWall();
+        }
     }
 
 
@@ -263,6 +294,43 @@ public class Player : MonoBehaviour
                 goWall.transform.parent = VerticalSpawnPoint.transform;
                 gameManager.SendMessage("AddVerticalWalls", goWall);
                 verticalWall2Time = 0;
+            }
+        }
+        wasPressedLeft = false;
+    }
+
+    public void SpawnVerticalWallAgile()
+    {
+        if (verticalWall1Time > verticalWallCD)
+        {
+            if (wasPressedLeft)
+            {
+                GameObject goWall = Instantiate(verticalWall, new Vector3(VerticalSpawnPoint.position.x, VerticalSpawnPoint.position.y, VerticalSpawnPoint.position.z), gameObject.transform.rotation);
+                goWall.transform.parent = VerticalSpawnPoint.transform;
+                gameManager.SendMessage("AddVerticalWalls", goWall);
+
+                verticalWall1Time = 0;
+                verticalWall2Placable = true;
+            }
+        }
+        else if (verticalWall2Time > verticalWallCD)
+        {
+            if (wasPressedLeft)
+            {
+                GameObject goWall = Instantiate(verticalWall, new Vector3(VerticalSpawnPoint.position.x, VerticalSpawnPoint.position.y, VerticalSpawnPoint.position.z), gameObject.transform.rotation);
+                goWall.transform.parent = VerticalSpawnPoint.transform;
+                gameManager.SendMessage("AddVerticalWalls", goWall);
+                verticalWall2Time = 0;
+            }
+        }
+        else if(verticalWall3Time > verticalWallCD)
+        {
+            if (wasPressedLeft)
+            {
+                GameObject goWall = Instantiate(verticalWall, new Vector3(VerticalSpawnPoint.position.x, VerticalSpawnPoint.position.y, VerticalSpawnPoint.position.z), gameObject.transform.rotation);
+                goWall.transform.parent = VerticalSpawnPoint.transform;
+                gameManager.SendMessage("AddVerticalWalls", goWall);
+                verticalWall3Time = 0;
             }
         }
         wasPressedLeft = false;
