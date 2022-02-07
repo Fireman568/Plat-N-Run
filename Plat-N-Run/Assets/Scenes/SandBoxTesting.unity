@@ -1725,6 +1725,21 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 113494638}
+    - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: dashMultiplier
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: dashTimeThreshhold
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: dashingTimeThreshhold
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1528042465656063868, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
       propertyPath: m_RootOrder

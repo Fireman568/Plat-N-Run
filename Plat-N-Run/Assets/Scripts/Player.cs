@@ -46,6 +46,10 @@ public class Player : MonoBehaviour
     public float slidingCooldown;
     [Tooltip("This is the time since sliding")]
     public float timeSinceSlide;
+    [Tooltip("Whether or not the player is dashing")]
+    public bool dashing;
+    [Tooltip("the threshhold at which the dashing times for both dashes will be checked against")]
+    public float dashTimeThreshhold;
 
     [Header("Falling variables")]
     [Tooltip("How much the downforce when in the air to bring the character back to the ground")]
@@ -100,6 +104,10 @@ public class Player : MonoBehaviour
     public float horWallTime = 4f;
     [Tooltip("The condition for the second wall to be placed based on the first wall being placed. Gets changed in code, dont change in editor")]
     public bool verticalWall2Placable;
+    [Tooltip("The time threshhold of how long the character can dash. once it hits the threshhold dashing is turned to false")]
+    public float dashingTime;
+    [Tooltip("The threshhold of how long the player can dash in the air until the gravity starts kicking in and pulling the character down again")]
+    public float dashingTimeThreshhold;
     [Tooltip("cooldown for one dash that the parkour guy will have")]
     public float dash1Time;
     [Tooltip("cooldown for 2nd dash that the parkour guy will have")]
@@ -258,9 +266,34 @@ public class Player : MonoBehaviour
         verticalWall3Time += Time.deltaTime;
         horWallTime += Time.deltaTime;
         timeSinceSlide += Time.deltaTime;
-        dash1Time += Time.deltaTime;
-        dash2Time += Time.deltaTime;
+        if (dashing)
+        {
+            dashingTime += Time.deltaTime;
+        }
+        if(dashingTime >= dashingTimeThreshhold)
+        {
+            dashing = false;
+            dashingTime = 0;
+        }
 
+        if (dash1Used)
+        {
+            dash1Time += Time.deltaTime;
+        }
+        if (dash2Used)
+        {
+            dash2Time += Time.deltaTime;
+        }
+        if(dash1Time >= dashTimeThreshhold)
+        {
+            dash1Time = 0;
+            dash1Used = false;
+        }
+        if(dash2Time >= dashTimeThreshhold)
+        {
+            dash2Time = 0;
+            dash2Used = false;
+        }
         if (!parkourMan)
         {
             playerMove();
@@ -621,7 +654,7 @@ public class Player : MonoBehaviour
                 numTimesJumped += 1;
             }
 
-            else
+            else if(!dashing)
             {
                 Debug.Log("Should be pulling character down");
                 if (wallRunComp == null || (wallRunComp != null && !wallRunComp.IsWallRunning()))
@@ -633,6 +666,21 @@ public class Player : MonoBehaviour
                     characterMovement = horizontalVelocity + (Vector3.up * verticalVelocity);
                     characterMovement += Vector3.down * grav * Time.deltaTime;
                 }
+            }
+            if(Input.GetMouseButtonDown(0) && !isGrounded && !wallRunComp.IsWallRunning() && (!dash1Used || !dash2Used) )
+            {
+                dashing = true;
+                if (!dash1Used)
+                {
+                    dash1Used = true;
+                }
+                else
+                {
+                    dash2Used = true;
+                }
+                characterMovement.y = 0;
+                Vector3 TargetVelocity = worldSpaceMoveInput * movementSpeed * speedModifier * dashMultiplier;
+                characterMovement = Vector3.Lerp(characterMovement, TargetVelocity, movementSharpnessOnGround * Time.deltaTime);
             }
             controller.Move(characterMovement * Time.deltaTime);
         }
