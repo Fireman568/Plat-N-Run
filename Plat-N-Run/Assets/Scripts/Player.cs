@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
     public float sprintingJumpMultiplier;
     [Tooltip("This is the multiplier for sliding, which can only be done if we are sprinting")]
     public float slidingMultiplier;
+    [Tooltip("This is the multiplier for the dash that parkour man will have")]
+    public float dashMultiplier;
     [Tooltip("This is how long the player has been slidng")]
     public float slidingTime;
     [Tooltip("This is the max time I want the player to be sliding before going back to moving regularly")]
@@ -98,6 +100,14 @@ public class Player : MonoBehaviour
     public float horWallTime = 4f;
     [Tooltip("The condition for the second wall to be placed based on the first wall being placed. Gets changed in code, dont change in editor")]
     public bool verticalWall2Placable;
+    [Tooltip("cooldown for one dash that the parkour guy will have")]
+    public float dash1Time;
+    [Tooltip("cooldown for 2nd dash that the parkour guy will have")]
+    public float dash2Time;
+    [Tooltip("Whether or not the first dash has been used")]
+    public bool dash1Used;
+    [Tooltip("Whether or not the second dash has been used")]
+    public bool dash2Used;
     
     [Tooltip("Starting pos for the horizontal wall spawnpoint")]
     public Vector3 horizontalStartingPos;
@@ -111,6 +121,10 @@ public class Player : MonoBehaviour
     public float wallJumpMultiplier;
     [Tooltip("For the upgraded hor wall. how much the character gets flown up when hitting a jumppad. Controls how much the character goes  up on a jumpPad")]
     public float jumpPadMultiplier = 10f;
+    [Tooltip("Used specifically for the parkour man to have him be able to jump twice")]
+    public bool canJump;
+    [Tooltip("Used to keep tracj of how many times parkour man has jumped to be able to change canJump to false or true")]
+    public int numTimesJumped;
 
     public bool notRespawning = true;
     
@@ -244,8 +258,17 @@ public class Player : MonoBehaviour
         verticalWall3Time += Time.deltaTime;
         horWallTime += Time.deltaTime;
         timeSinceSlide += Time.deltaTime;
+        dash1Time += Time.deltaTime;
+        dash2Time += Time.deltaTime;
 
-        playerMove();
+        if (!parkourMan)
+        {
+            playerMove();
+        }
+        else
+        {
+            parkourPlayerMove();
+        }
         if (Input.GetMouseButtonDown(0))
         {
             wasPressedLeft = true;
@@ -254,12 +277,15 @@ public class Player : MonoBehaviour
         {
             wasPressedRight = true;
         }
-
+        if(numTimesJumped == 2)
+        {
+            canJump = false;
+        }
         healthText.text = "Health: " + health;
     }
     public void FixedUpdate()
     {
-        if (defaultGuy)
+        if (defaultGuy || bigBulkyMan)
         {
             SpawnVerticalWall();
             SpawnHorizontalWall();
@@ -358,6 +384,8 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
             timeSinceFallenOff = 0;
+            numTimesJumped = 0;
+            canJump = true;
         }
         else
         {
@@ -496,6 +524,122 @@ public class Player : MonoBehaviour
         
 
         
+
+
+    }
+
+    public void parkourPlayerMove()
+    {
+        if (notRespawning)
+        {
+            float inputX = Input.GetAxisRaw("Horizontal");
+            float inputY = Input.GetAxisRaw("Vertical");
+            Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+
+            Vector3 worldSpaceMoveInput = transform.TransformVector(move);
+
+            float mouseY = Input.GetAxisRaw("Mouse Y");
+            float mouseX = Input.GetAxisRaw("Mouse X");
+            float speedModifier = isSprinting ? sprintingMultiplier : 1f;
+            float slidingModifier = isSliding ? slidingMultiplier : 1f;
+            //rotate Player horizontally
+            {
+                transform.Rotate(new Vector3(0f, (mouseX * sensX), 0f), Space.Self);
+            }
+            //rotate vertically
+            {
+                verticalCamAngle += mouseY * sensY;
+                verticalCamAngle = Mathf.Clamp(verticalCamAngle, -89f, 89f);
+
+                if (wallRunComp != null)
+                {
+                    playerCamera.transform.localEulerAngles = new Vector3(-verticalCamAngle, 0, wallRunComp.GetCameraRoll());
+                }
+                else
+                {
+                    playerCamera.transform.localEulerAngles = new Vector3(-verticalCamAngle, 0, 0);
+                }
+            }
+
+
+            if (isGrounded || (wallRunComp != null && wallRunComp.IsWallRunning()))
+            {
+                if (isGrounded)
+                {
+                    if (isGrounded && isSliding)
+                    {
+                        Vector3 Target = worldSpaceMoveInput * movementSpeed * speedModifier * slidingModifier;
+                        characterMovement = Vector3.Lerp(characterMovement, Target, movementSharpnessOnGround * Time.deltaTime);
+                        playerCamera.transform.localPosition = Vector3.Lerp(initialPos, slidingPos, 1);
+                        needToLerpBack = true;
+                    }
+                    else
+                    {
+                        Vector3 TargetVelocity = worldSpaceMoveInput * movementSpeed * speedModifier;
+                        characterMovement = Vector3.Lerp(characterMovement, TargetVelocity, movementSharpnessOnGround * Time.deltaTime);
+                        if (needToLerpBack)
+                        {
+                            playerCamera.transform.localPosition = Vector3.Lerp(slidingPos, initialPos, 1);
+                            needToLerpBack = false;
+                        }
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || (wallRunComp != null && wallRunComp.IsWallRunning())))
+                {
+                    Debug.Log("I have jumped");
+                    if (isGrounded)
+                    {
+                        characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                        characterMovement += Vector3.up * jumpingMultiplier;
+                    }
+                    else
+                    {
+                        characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                        characterMovement += wallRunComp.GetWallJumpDirection() * wallJumpMultiplier;
+                    }
+                    numTimesJumped += 1;
+                }
+                //else if (!isGrounded && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
+                //{
+                //    Debug.Log("I have jumped within the threshhold");
+                //    characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                //    characterMovement += Vector3.up * jumpingMultiplier;
+                //}
+
+            }
+            else if (!isGrounded && Input.GetKeyDown(KeyCode.Space) && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
+            {
+                Debug.Log("I have jumped within the threshhold");
+                characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                characterMovement += Vector3.up * jumpingMultiplier;
+                numTimesJumped += 1;
+            }
+            else if(!isGrounded && Input.GetKeyDown(KeyCode.Space) && !wallRunComp.IsWallRunning() && timeSinceFallenOff >= fallOffThreshhold && canJump)
+            {
+                characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                characterMovement += Vector3.up * jumpingMultiplier;
+                numTimesJumped += 1;
+            }
+
+            else
+            {
+                Debug.Log("Should be pulling character down");
+                if (wallRunComp == null || (wallRunComp != null && !wallRunComp.IsWallRunning()))
+                {
+                    characterMovement += worldSpaceMoveInput * accelerationInAir * Time.deltaTime;
+                    float verticalVelocity = characterMovement.y;
+                    Vector3 horizontalVelocity = Vector3.ProjectOnPlane(characterMovement, Vector3.up);
+                    horizontalVelocity = Vector3.ClampMagnitude(horizontalVelocity, maxAirSpeed * speedModifier);
+                    characterMovement = horizontalVelocity + (Vector3.up * verticalVelocity);
+                    characterMovement += Vector3.down * grav * Time.deltaTime;
+                }
+            }
+            controller.Move(characterMovement * Time.deltaTime);
+        }
+
+
+
+
 
 
     }

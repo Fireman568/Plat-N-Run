@@ -17,13 +17,12 @@ public class HorizontalWallLock : MonoBehaviour
     public Vector3 prevPos;
 
     public bool placed = false;
-    public bool defaultPlayer;
-    public bool agilePlayer;
     Quaternion startRotation;
     public float deathTime;
     // Start is called before the first frame update
     void Start()
     {
+
         playerRotation = GameObject.FindGameObjectWithTag("Player").transform;
         spawnPoint = GameObject.FindGameObjectWithTag("Spawn").transform;
         startRotation = playerRotation.rotation;
