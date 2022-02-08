@@ -8,6 +8,7 @@ public class WallManager : MonoBehaviour
     Queue<GameObject> horizontalWalls = new Queue<GameObject>();
     private GameObject wall1;
     private GameObject wall2;
+    private GameObject wall3;
     private GameObject horizontalWall1;
     
     // Start is called before the first frame update
@@ -36,6 +37,10 @@ public class WallManager : MonoBehaviour
         {
             wall2 = go;
         }
+        else if(wall3 == null)
+        {
+            wall3 = go;
+        }
         verticalWalls.Enqueue(go);
     }
 
@@ -51,12 +56,13 @@ public class WallManager : MonoBehaviour
 
     public void verticalWallManage()
     {
-        if (verticalWalls.Count > 2)
+        if (verticalWalls.Count > 3)
         {
             wall1 = verticalWalls.Dequeue();
             Destroy(wall1);
             wall1 = wall2;
-            wall2 = null;
+            wall2 = wall3;
+            wall3 = null;
 
 
         }

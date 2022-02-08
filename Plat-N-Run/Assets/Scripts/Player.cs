@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
     public float sprintingJumpMultiplier;
     [Tooltip("This is the multiplier for sliding, which can only be done if we are sprinting")]
     public float slidingMultiplier;
+    [Tooltip("This is the multiplier for the dash that parkour man will have")]
+    public float dashMultiplier;
     [Tooltip("This is how long the player has been slidng")]
     public float slidingTime;
     [Tooltip("This is the max time I want the player to be sliding before going back to moving regularly")]
@@ -44,6 +46,10 @@ public class Player : MonoBehaviour
     public float slidingCooldown;
     [Tooltip("This is the time since sliding")]
     public float timeSinceSlide;
+    [Tooltip("Whether or not the player is dashing")]
+    public bool dashing;
+    [Tooltip("the threshhold at which the dashing times for both dashes will be checked against")]
+    public float dashTimeThreshhold;
 
     [Header("Falling variables")]
     [Tooltip("How much the downforce when in the air to bring the character back to the ground")]
@@ -58,6 +64,16 @@ public class Player : MonoBehaviour
     public float fallOffThreshhold;
     public int health = 3;
     public TextMeshProUGUI healthText;
+
+    [Header("Character Choice")]
+    [Tooltip("Default character check")]
+    public bool defaultGuy;
+    [Tooltip("Big Bulky Man")]
+    public bool bigBulkyMan;
+    [Tooltip("Agile girl")]
+    public bool agileGirl;
+    [Tooltip("Jumper man")]
+    public bool parkourMan;
 
     [Header("Camera")]
     [Tooltip("Sensitivity of the camera moving horizontally")]
@@ -82,10 +98,24 @@ public class Player : MonoBehaviour
     public float verticalWall1Time = 4f;
     [Tooltip("The time for the second vertical wall to keep the cooldown per wall")]
     public float verticalWall2Time = 4f;
+    [Tooltip("The time for the third wall for specifically the agile character to keep the cooldown per wall")]
+    public float verticalWall3Time = 4f;
     [Tooltip("The time for the horizontal wall to keep track of how long its been since the last hor wall has been placed")]
     public float horWallTime = 4f;
     [Tooltip("The condition for the second wall to be placed based on the first wall being placed. Gets changed in code, dont change in editor")]
     public bool verticalWall2Placable;
+    [Tooltip("The time threshhold of how long the character can dash. once it hits the threshhold dashing is turned to false")]
+    public float dashingTime;
+    [Tooltip("The threshhold of how long the player can dash in the air until the gravity starts kicking in and pulling the character down again")]
+    public float dashingTimeThreshhold;
+    [Tooltip("cooldown for one dash that the parkour guy will have")]
+    public float dash1Time;
+    [Tooltip("cooldown for 2nd dash that the parkour guy will have")]
+    public float dash2Time;
+    [Tooltip("Whether or not the first dash has been used")]
+    public bool dash1Used;
+    [Tooltip("Whether or not the second dash has been used")]
+    public bool dash2Used;
     
     [Tooltip("Starting pos for the horizontal wall spawnpoint")]
     public Vector3 horizontalStartingPos;
@@ -99,6 +129,10 @@ public class Player : MonoBehaviour
     public float wallJumpMultiplier;
     [Tooltip("For the upgraded hor wall. how much the character gets flown up when hitting a jumppad. Controls how much the character goes  up on a jumpPad")]
     public float jumpPadMultiplier = 10f;
+    [Tooltip("Used specifically for the parkour man to have him be able to jump twice")]
+    public bool canJump;
+    [Tooltip("Used to keep tracj of how many times parkour man has jumped to be able to change canJump to false or true")]
+    public int numTimesJumped;
 
     public bool notRespawning = true;
     
@@ -141,11 +175,32 @@ public class Player : MonoBehaviour
     
     public void Start()
     {
-       
+        // in anticipation of the objective system and character selection, the bool for which character has been selected and which objectives need to be displayed will be set in here at the start of 
+        //each scene so the character character is chosen and its subsequent specific movement variables, as well as the specific objectives it needs
         controller = GetComponent<CharacterController>();
         wallRunComp = GetComponent<WallRun>();
         initialPos = playerCamera.transform.localPosition;
         slidingPos = new Vector3(initialPos.x, initialPos.y - 1, initialPos.z);
+        defaultGuy = false;
+        bigBulkyMan = false;
+        agileGirl = false;
+        parkourMan = false;
+        if(gameObject.name == "Player")
+        {
+            defaultGuy = true;
+        }
+        else if(gameObject.name == "BigBulkyMan")
+        {
+            bigBulkyMan = true;
+        }
+        else if(gameObject.name == "AgileQuickGirl")
+        {
+            agileGirl = true;
+        }
+        else
+        {
+            parkourMan = true;
+        }
         if(sprintingVolume != null)
         {
             SetVolumeWeight(0);
@@ -208,10 +263,45 @@ public class Player : MonoBehaviour
         }
         verticalWall1Time += Time.deltaTime;
         verticalWall2Time += Time.deltaTime;
+        verticalWall3Time += Time.deltaTime;
         horWallTime += Time.deltaTime;
         timeSinceSlide += Time.deltaTime;
+        if (dashing)
+        {
+            dashingTime += Time.deltaTime;
+        }
+        if(dashingTime >= dashingTimeThreshhold)
+        {
+            dashing = false;
+            dashingTime = 0;
+        }
 
-        playerMove();
+        if (dash1Used)
+        {
+            dash1Time += Time.deltaTime;
+        }
+        if (dash2Used)
+        {
+            dash2Time += Time.deltaTime;
+        }
+        if(dash1Time >= dashTimeThreshhold)
+        {
+            dash1Time = 0;
+            dash1Used = false;
+        }
+        if(dash2Time >= dashTimeThreshhold)
+        {
+            dash2Time = 0;
+            dash2Used = false;
+        }
+        if (!parkourMan)
+        {
+            playerMove();
+        }
+        else
+        {
+            parkourPlayerMove();
+        }
         if (Input.GetMouseButtonDown(0))
         {
             wasPressedLeft = true;
@@ -220,13 +310,24 @@ public class Player : MonoBehaviour
         {
             wasPressedRight = true;
         }
-
+        if(numTimesJumped == 2)
+        {
+            canJump = false;
+        }
         healthText.text = "Health: " + health;
     }
     public void FixedUpdate()
     {
-        SpawnVerticalWall();
-        SpawnHorizontalWall();
+        if (defaultGuy || bigBulkyMan)
+        {
+            SpawnVerticalWall();
+            SpawnHorizontalWall();
+        }
+        else if (agileGirl)
+        {
+            SpawnVerticalWallAgile();
+            SpawnHorizontalWall();
+        }
     }
 
 
@@ -257,6 +358,43 @@ public class Player : MonoBehaviour
         wasPressedLeft = false;
     }
 
+    public void SpawnVerticalWallAgile()
+    {
+        if (verticalWall1Time > verticalWallCD)
+        {
+            if (wasPressedLeft)
+            {
+                GameObject goWall = Instantiate(verticalWall, new Vector3(VerticalSpawnPoint.position.x, VerticalSpawnPoint.position.y, VerticalSpawnPoint.position.z), gameObject.transform.rotation);
+                goWall.transform.parent = VerticalSpawnPoint.transform;
+                gameManager.SendMessage("AddVerticalWalls", goWall);
+
+                verticalWall1Time = 0;
+                verticalWall2Placable = true;
+            }
+        }
+        else if (verticalWall2Time > verticalWallCD)
+        {
+            if (wasPressedLeft)
+            {
+                GameObject goWall = Instantiate(verticalWall, new Vector3(VerticalSpawnPoint.position.x, VerticalSpawnPoint.position.y, VerticalSpawnPoint.position.z), gameObject.transform.rotation);
+                goWall.transform.parent = VerticalSpawnPoint.transform;
+                gameManager.SendMessage("AddVerticalWalls", goWall);
+                verticalWall2Time = 0;
+            }
+        }
+        else if(verticalWall3Time > verticalWallCD)
+        {
+            if (wasPressedLeft)
+            {
+                GameObject goWall = Instantiate(verticalWall, new Vector3(VerticalSpawnPoint.position.x, VerticalSpawnPoint.position.y, VerticalSpawnPoint.position.z), gameObject.transform.rotation);
+                goWall.transform.parent = VerticalSpawnPoint.transform;
+                gameManager.SendMessage("AddVerticalWalls", goWall);
+                verticalWall3Time = 0;
+            }
+        }
+        wasPressedLeft = false;
+    }
+
     public void SpawnHorizontalWall()
     {
         if(horWallTime > horizontalWallCD)
@@ -279,6 +417,8 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
             timeSinceFallenOff = 0;
+            numTimesJumped = 0;
+            canJump = true;
         }
         else
         {
@@ -371,6 +511,7 @@ public class Player : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || (wallRunComp != null && wallRunComp.IsWallRunning())))
                 {
+                    Debug.Log("I have jumped");
                     if (isGrounded)
                     {
                         characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
@@ -382,14 +523,21 @@ public class Player : MonoBehaviour
                         characterMovement += wallRunComp.GetWallJumpDirection() * wallJumpMultiplier;
                     }
                 }
-                //if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
+                //else if (!isGrounded && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
                 //{
+                //    Debug.Log("I have jumped within the threshhold");
                 //    characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
                 //    characterMovement += Vector3.up * jumpingMultiplier;
                 //}
 
             }
-            
+            else if(!isGrounded && Input.GetKeyDown(KeyCode.Space) && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
+            {
+                Debug.Log("I have jumped within the threshhold");
+                characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                characterMovement += Vector3.up * jumpingMultiplier;
+            }
+
             else
             {
                 Debug.Log("Should be pulling character down");
@@ -409,6 +557,137 @@ public class Player : MonoBehaviour
         
 
         
+
+
+    }
+
+    public void parkourPlayerMove()
+    {
+        if (notRespawning)
+        {
+            float inputX = Input.GetAxisRaw("Horizontal");
+            float inputY = Input.GetAxisRaw("Vertical");
+            Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+
+            Vector3 worldSpaceMoveInput = transform.TransformVector(move);
+
+            float mouseY = Input.GetAxisRaw("Mouse Y");
+            float mouseX = Input.GetAxisRaw("Mouse X");
+            float speedModifier = isSprinting ? sprintingMultiplier : 1f;
+            float slidingModifier = isSliding ? slidingMultiplier : 1f;
+            //rotate Player horizontally
+            {
+                transform.Rotate(new Vector3(0f, (mouseX * sensX), 0f), Space.Self);
+            }
+            //rotate vertically
+            {
+                verticalCamAngle += mouseY * sensY;
+                verticalCamAngle = Mathf.Clamp(verticalCamAngle, -89f, 89f);
+
+                if (wallRunComp != null)
+                {
+                    playerCamera.transform.localEulerAngles = new Vector3(-verticalCamAngle, 0, wallRunComp.GetCameraRoll());
+                }
+                else
+                {
+                    playerCamera.transform.localEulerAngles = new Vector3(-verticalCamAngle, 0, 0);
+                }
+            }
+
+
+            if (isGrounded || (wallRunComp != null && wallRunComp.IsWallRunning()))
+            {
+                if (isGrounded)
+                {
+                    if (isGrounded && isSliding)
+                    {
+                        Vector3 Target = worldSpaceMoveInput * movementSpeed * speedModifier * slidingModifier;
+                        characterMovement = Vector3.Lerp(characterMovement, Target, movementSharpnessOnGround * Time.deltaTime);
+                        playerCamera.transform.localPosition = Vector3.Lerp(initialPos, slidingPos, 1);
+                        needToLerpBack = true;
+                    }
+                    else
+                    {
+                        Vector3 TargetVelocity = worldSpaceMoveInput * movementSpeed * speedModifier;
+                        characterMovement = Vector3.Lerp(characterMovement, TargetVelocity, movementSharpnessOnGround * Time.deltaTime);
+                        if (needToLerpBack)
+                        {
+                            playerCamera.transform.localPosition = Vector3.Lerp(slidingPos, initialPos, 1);
+                            needToLerpBack = false;
+                        }
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || (wallRunComp != null && wallRunComp.IsWallRunning())))
+                {
+                    Debug.Log("I have jumped");
+                    if (isGrounded)
+                    {
+                        characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                        characterMovement += Vector3.up * jumpingMultiplier;
+                    }
+                    else
+                    {
+                        characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                        characterMovement += wallRunComp.GetWallJumpDirection() * wallJumpMultiplier;
+                    }
+                    numTimesJumped += 1;
+                }
+                //else if (!isGrounded && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
+                //{
+                //    Debug.Log("I have jumped within the threshhold");
+                //    characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                //    characterMovement += Vector3.up * jumpingMultiplier;
+                //}
+
+            }
+            else if (!isGrounded && Input.GetKeyDown(KeyCode.Space) && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
+            {
+                Debug.Log("I have jumped within the threshhold");
+                characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                characterMovement += Vector3.up * jumpingMultiplier;
+                numTimesJumped += 1;
+            }
+            else if(!isGrounded && Input.GetKeyDown(KeyCode.Space) && !wallRunComp.IsWallRunning() && timeSinceFallenOff >= fallOffThreshhold && canJump)
+            {
+                characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
+                characterMovement += Vector3.up * jumpingMultiplier;
+                numTimesJumped += 1;
+            }
+
+            else if(!dashing)
+            {
+                Debug.Log("Should be pulling character down");
+                if (wallRunComp == null || (wallRunComp != null && !wallRunComp.IsWallRunning()))
+                {
+                    characterMovement += worldSpaceMoveInput * accelerationInAir * Time.deltaTime;
+                    float verticalVelocity = characterMovement.y;
+                    Vector3 horizontalVelocity = Vector3.ProjectOnPlane(characterMovement, Vector3.up);
+                    horizontalVelocity = Vector3.ClampMagnitude(horizontalVelocity, maxAirSpeed * speedModifier);
+                    characterMovement = horizontalVelocity + (Vector3.up * verticalVelocity);
+                    characterMovement += Vector3.down * grav * Time.deltaTime;
+                }
+            }
+            if(Input.GetMouseButtonDown(0) && !isGrounded && !wallRunComp.IsWallRunning() && (!dash1Used || !dash2Used) )
+            {
+                dashing = true;
+                if (!dash1Used)
+                {
+                    dash1Used = true;
+                }
+                else
+                {
+                    dash2Used = true;
+                }
+                characterMovement.y = 0;
+                Vector3 TargetVelocity = worldSpaceMoveInput * movementSpeed * speedModifier * dashMultiplier;
+                characterMovement = Vector3.Lerp(characterMovement, TargetVelocity, movementSharpnessOnGround * Time.deltaTime);
+            }
+            controller.Move(characterMovement * Time.deltaTime);
+        }
+
+
+
+
 
 
     }

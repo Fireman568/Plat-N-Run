@@ -22,6 +22,7 @@ public class HorizontalWallLock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         playerRotation = GameObject.FindGameObjectWithTag("Player").transform;
         spawnPoint = GameObject.FindGameObjectWithTag("Spawn").transform;
         startRotation = playerRotation.rotation;
