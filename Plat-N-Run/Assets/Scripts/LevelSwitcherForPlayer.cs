@@ -6,6 +6,7 @@ public class LevelSwitcherForPlayer : MonoBehaviour
 {
     public LevelLoader levelLoader;
     //public GameObject levelSelect;
+    public GameObject achievementChecker;
     public GameObject pauseMenu;
     public GameObject player;
     //public GameObject turret;
@@ -50,15 +51,21 @@ public class LevelSwitcherForPlayer : MonoBehaviour
     //}
     public void GoToLevel1(int sceneIndex)
     {
-        levelLoader.LoadLevel(sceneIndex);
+        //achievementChecker.SendMessage("changeLevelBool", true);
+        //levelLoader.LoadLevel(sceneIndex);
+        StartCoroutine("WaitToLoad", sceneIndex);
     }
     public void GoToLevel2(int sceneIndex)
     {
-        levelLoader.LoadLevel(sceneIndex);
+        //achievementChecker.SendMessage("changeLevelBool", true);
+        //levelLoader.LoadLevel(sceneIndex);
+        StartCoroutine("WaitToLoad", sceneIndex);
     }
     public void GoToLevel3(int sceneIndex)
     {
-        levelLoader.LoadLevel(sceneIndex);
+        //achievementChecker.SendMessage("changeLevelBool", true);
+        //levelLoader.LoadLevel(sceneIndex);
+        StartCoroutine("WaitToLoad", sceneIndex);
     }
     public void GoToMainMenu()
     {
@@ -75,4 +82,12 @@ public class LevelSwitcherForPlayer : MonoBehaviour
         Application.Quit();
     }
     //IEnumerator AnimationTransition(int sceneIndex)
+
+    public IEnumerator WaitToLoad(int sceneIndex)
+    {
+        Debug.Log("Im waiting to load");
+        achievementChecker.SendMessage("changeLevelBool");
+        yield return new WaitForSeconds(.001f);
+        levelLoader.LoadLevel(sceneIndex);
+    }
 }

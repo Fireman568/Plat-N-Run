@@ -50,6 +50,12 @@ public class Player : MonoBehaviour
     public bool dashing;
     [Tooltip("the threshhold at which the dashing times for both dashes will be checked against")]
     public float dashTimeThreshhold;
+    [Tooltip("The current time of the level")]
+    public float levelTime;
+    [Tooltip("The amount of deaths the player currently has")]
+    public int deathAmount;
+    [Tooltip("How many times the player has jumped")]
+    public int jumpAmount;
 
     [Header("Falling variables")]
     [Tooltip("How much the downforce when in the air to bring the character back to the ground")]
@@ -214,7 +220,7 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        
+        levelTime += Time.deltaTime;
         Grounded();
         Sprinting();
         Sliding();
@@ -315,6 +321,7 @@ public class Player : MonoBehaviour
             canJump = false;
         }
         healthText.text = "Health: " + health;
+        //Debug.Log(levelTime);
     }
     public void FixedUpdate()
     {
@@ -516,11 +523,13 @@ public class Player : MonoBehaviour
                     {
                         characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
                         characterMovement += Vector3.up * jumpingMultiplier;
+                        jumpAmount += 1;
                     }
                     else
                     {
                         characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
                         characterMovement += wallRunComp.GetWallJumpDirection() * wallJumpMultiplier;
+                        jumpAmount += 1;
                     }
                 }
                 //else if (!isGrounded && !wallRunComp.IsWallRunning() && timeSinceFallenOff <= fallOffThreshhold)
@@ -536,6 +545,7 @@ public class Player : MonoBehaviour
                 Debug.Log("I have jumped within the threshhold");
                 characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
                 characterMovement += Vector3.up * jumpingMultiplier;
+                jumpAmount += 1;
             }
 
             else

@@ -307,6 +307,155 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34614611}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &38968100
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: level
+      value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 855182705}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: special.Array.data[0].deathAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: special.Array.data[0].notCompleted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: special.Array.data[0].achievementName
+      value: Jumper Connoisour
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: special.Array.data[1].achievementType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: special.Array.data[0].numOfJumpsThreshold
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: level1Achievements.Array.data[0].notCompleted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: level1Achievements.Array.data[1].notCompleted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: level1Achievements.Array.data[2].notCompleted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: level1Achievements.Array.data[3].notCompleted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: level1Achievements.Array.data[4].notCompleted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: level1Achievements.Array.data[5].notCompleted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: level1Achievements.Array.data[6].notCompleted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: level1Achievements.Array.data[7].notCompleted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: level1Achievements.Array.data[0].achievementName
+      value: 1st Level Speedrunner
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293256672571886979, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_Name
+      value: AchievementChecker
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151393621919451898, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151393621919451898, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 224.59686
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151393621919451898, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -614.24713
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151393621919451898, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1113.5122
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151393621919451898, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151393621919451898, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151393621919451898, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151393621919451898, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151393621919451898, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151393621919451898, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151393621919451898, guid: 87150e43abd8a9e4986b838a040524be,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87150e43abd8a9e4986b838a040524be, type: 3}
 --- !u!1 &39187681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1423,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &223662201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1293256672571886979, guid: 87150e43abd8a9e4986b838a040524be,
+    type: 3}
+  m_PrefabInstance: {fileID: 38968100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &231153297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3629,6 +3784,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19926926, guid: f470fdfb27233884a81c3eeb85b0d7f8, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19944080, guid: f470fdfb27233884a81c3eeb85b0d7f8, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19956882, guid: f470fdfb27233884a81c3eeb85b0d7f8, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f470fdfb27233884a81c3eeb85b0d7f8, type: 3}
 --- !u!1 &639908121
@@ -4855,6 +5022,7 @@ GameObject:
   - component: {fileID: 773436786}
   - component: {fileID: 773436788}
   - component: {fileID: 773436787}
+  - component: {fileID: 773436789}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4901,6 +5069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoad: {fileID: 773436785}
+  achievementChecker: {fileID: 0}
   sceneToLoad: 3
   scene:
     m_Handle: 0
@@ -4932,6 +5101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoader: {fileID: 773436785}
+  achievementChecker: {fileID: 223662201}
   pauseMenu: {fileID: 912380577}
   player: {fileID: 855182700}
   healthText: {fileID: 2059459023}
@@ -5048,6 +5218,183 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 773436787}
+--- !u!114 &773436789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773436781}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acda40087c9aef3419c87907c9562e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level1Achievements:
+  - achievementType: 0
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 60
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementType: 3
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 5
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementType: 1
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementType: 1
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementType: 2
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementType: 2
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementType: 2
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementType: 4
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  level2Achievements:
+  - achievementType: 0
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementType: 0
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementType: 0
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementType: 0
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementType: 0
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementName: 
+    achievementDescription: 
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  level3Achievements: []
+  level4Achievements: []
+  level5Achievements: []
+  special: []
+  level: 
+  player: {fileID: 855182705}
+  levelDone: 0
 --- !u!1 &787111923
 GameObject:
   m_ObjectHideFlags: 0
@@ -5153,6 +5500,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1002128751}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &855182705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1002128751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855182700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960c6f682c4c06144907a1b3f02f994f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &860325984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7403976577910023830, guid: 66b7b84f850502c47a8fdc08d3d8c6b2,
@@ -9035,6 +9394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoad: {fileID: 773436785}
+  achievementChecker: {fileID: 223662201}
   sceneToLoad: 3
   scene:
     m_Handle: 0
@@ -11126,6 +11486,18 @@ PrefabInstance:
     - target: {fileID: 457904, guid: f470fdfb27233884a81c3eeb85b0d7f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19926926, guid: f470fdfb27233884a81c3eeb85b0d7f8, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19944080, guid: f470fdfb27233884a81c3eeb85b0d7f8, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19956882, guid: f470fdfb27233884a81c3eeb85b0d7f8, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f470fdfb27233884a81c3eeb85b0d7f8, type: 3}

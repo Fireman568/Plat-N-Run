@@ -15,6 +15,7 @@ public class LevelSwitcher : MonoBehaviour
     public GameObject level1Button;
     public GameObject level2Button;
     public GameObject level3Button;
+    public GameObject achievementChecker;
     public Animator transition;
     public TextMeshProUGUI collectiblesAmount;
     public float transitionTime;
@@ -77,14 +78,17 @@ public class LevelSwitcher : MonoBehaviour
     public void GoToLevel1(int sceneIndex)
     {
         levelLoader.LoadLevel(sceneIndex);
+        
     }
     public void GoToLevel2(int sceneIndex)
     {
         levelLoader.LoadLevel(sceneIndex);
+        
     }
     public void GoToLevel3(int sceneIndex)
     {
         levelLoader.LoadLevel(sceneIndex);
+        
     }
 
     public void GoBackToMainMenu(GameObject pageToTurnOff)

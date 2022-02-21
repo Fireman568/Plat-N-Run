@@ -19,6 +19,7 @@ public class Respawn : MonoBehaviour
         if(player.transform.position.y <= -50)
         {
             respawn = true;
+            player.deathAmount += 1;
             //player.SendMessage("changeRespawn", true);
         }
         if(player.health == 0)
