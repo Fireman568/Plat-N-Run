@@ -1713,7 +1713,7 @@ PrefabInstance:
     - target: {fileID: 1528042465656063846, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
@@ -1728,7 +1728,7 @@ PrefabInstance:
     - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
       propertyPath: dashMultiplier
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
@@ -2701,13 +2701,18 @@ PrefabInstance:
     - target: {fileID: 1528042465656063846, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 113494638}
+    - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
+        type: 3}
+      propertyPath: fallOffThreshhold
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1528042465656063868, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
       propertyPath: m_RootOrder
