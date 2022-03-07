@@ -50,7 +50,7 @@ public class AchievementChecker : MonoBehaviour
                 
                 if(item.notCompleted == true)
                 {
-                    
+                    Debug.Log("checking item");
                     if (item.achievementType == Achievement.Types.TIME && levelDone == true)
                     {
                        
