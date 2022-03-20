@@ -56,6 +56,8 @@ public class Player : MonoBehaviour
     public int deathAmount;
     [Tooltip("How many times the player has jumped")]
     public int jumpAmount;
+    //[Tooltip("Total time for the current run")]
+    //public float totalTime;
 
     [Header("Falling variables")]
     [Tooltip("How much the downforce when in the air to bring the character back to the ground")]
@@ -69,7 +71,7 @@ public class Player : MonoBehaviour
     [Tooltip("The threshhold at which the player is allowed to still jump shortly after falling off of a platform to try and make it seem like they didnt miss a jumps")]
     public float fallOffThreshhold;
     public int health = 3;
-    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI timeText;
 
     [Header("Character Choice")]
     [Tooltip("Default character check")]
@@ -214,13 +216,14 @@ public class Player : MonoBehaviour
         horizontalStartingPos = new Vector3(HorizontalSpawnPoint.transform.localPosition.x, HorizontalSpawnPoint.transform.localPosition.y, HorizontalSpawnPoint.transform.localPosition.z);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        healthText.text = "Health: " + health;
+        //timeText.text = "Time: " + totalTime;
     }
 
 
     public void Update()
     {
         levelTime += Time.deltaTime;
+        //totalTime += Time.deltaTime;
         Grounded();
         Sprinting();
         Sliding();
@@ -320,7 +323,7 @@ public class Player : MonoBehaviour
         {
             canJump = false;
         }
-        healthText.text = "Health: " + health;
+        //timeText.text = "Time: " + totalTime;
         //Debug.Log(levelTime);
     }
     public void FixedUpdate()

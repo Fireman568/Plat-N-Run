@@ -5,12 +5,13 @@ using TMPro;
 public class LevelSwitcherForPlayer : MonoBehaviour
 {
     public LevelLoader levelLoader;
+    private GameObject timerThing;
     //public GameObject levelSelect;
     public GameObject achievementChecker;
     public GameObject pauseMenu;
     public GameObject player;
     //public GameObject turret;
-    public GameObject healthText;
+    public GameObject timeText;
     public Animator animation;
     public float transitionTime = 1f;
     public bool ableToPause = true;
@@ -18,6 +19,7 @@ public class LevelSwitcherForPlayer : MonoBehaviour
     {
         //levelSelect.SetActive(false);
         pauseMenu.SetActive(false);
+        timerThing = this.gameObject;
     }
     public void Update()
     {
@@ -29,13 +31,14 @@ public class LevelSwitcherForPlayer : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             ableToPause = false;
-            healthText.SetActive(false);
+            timeText.SetActive(false);
             pauseMenu.SetActive(true);
+            timerThing.SendMessage("stopCounting");
         }
     }
     public void Resume()
     {
-        healthText.SetActive(true);
+        timeText.SetActive(true);
         pauseMenu.SetActive(false);
         player.GetComponent<Player>().enabled = true;
         //turret.GetComponent<ShootAtPlayer>().enabled = true;
@@ -43,6 +46,7 @@ public class LevelSwitcherForPlayer : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         ableToPause = true;
+        timerThing.SendMessage("resumeCounting");
     }
     //public void LevelSelect()
     //{
