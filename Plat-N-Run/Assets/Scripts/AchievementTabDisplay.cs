@@ -28,15 +28,15 @@ public class AchievementTabDisplay : MonoBehaviour
         }
         if(timer >= timerThreshold)
         {
-            showAch = false;
+            showAch = !showAch;
             timer = 0;
         }
     }
 
-    public void getAchievementInfo(string achievementNamePar, string achievementDescriptionPar)
+    public void getAchievementInfo(Achievement item)
     {
-        achievementName.text = achievementNamePar;
-        achievementDescription.text = achievementDescriptionPar;
+        achievementName.text = item.achievementName;
+        achievementDescription.text = item.achievementDescription;
     }
     public void showAchievement(bool show)
     {

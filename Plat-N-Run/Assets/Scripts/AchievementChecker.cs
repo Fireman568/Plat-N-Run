@@ -12,6 +12,7 @@ public class AchievementChecker : MonoBehaviour
     public List<Achievement> level4Achievements;
     public List<Achievement> level5Achievements;
     public List<Achievement> special;
+    public GameObject achievementImage;
 
     //get the current scene to retrieve the scene name
     private Scene scene;
@@ -58,6 +59,8 @@ public class AchievementChecker : MonoBehaviour
                         {
                             item.completed = true;
                             item.notCompleted = false;
+                            achievementImage.SendMessage("getAchievementInfo", item);
+                            achievementImage.SendMessage("showAchievement", true);
                             Debug.Log("You completed the level in time! Congrations!");
                         }
                     }
@@ -68,6 +71,8 @@ public class AchievementChecker : MonoBehaviour
                         {
                             item.completed = true;
                             item.notCompleted = false;
+                            achievementImage.SendMessage("getAchievementInfo", item);
+                            achievementImage.SendMessage("showAchievement", true);
                             Debug.Log("You didnt die too many times! Congrations!");
                         }
                     }
@@ -95,6 +100,8 @@ public class AchievementChecker : MonoBehaviour
                             item.completed = true;
                             item.notCompleted = false;
                             //item.notCompleted = false;
+                            achievementImage.SendMessage("getAchievementInfo", item);
+                            achievementImage.SendMessage("showAchievement", true);
                             Debug.Log("Youve jumped a lot. Here's an achievement");
                         }
                     }
