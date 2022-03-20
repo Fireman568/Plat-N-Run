@@ -12,6 +12,9 @@ public class AchievementChecker : MonoBehaviour
     public List<Achievement> level4Achievements;
     public List<Achievement> level5Achievements;
     public List<Achievement> special;
+
+    public GameObject achievementImage;
+
     public bool level1_0;
     public bool level1_1;
     public bool level1_2;
@@ -20,6 +23,7 @@ public class AchievementChecker : MonoBehaviour
     public bool level1_5;
     public bool level1_6;
     public bool level1_7;
+
 
     //get the current scene to retrieve the scene name
     private Scene scene;
@@ -124,6 +128,9 @@ public class AchievementChecker : MonoBehaviour
                         {
                             item.completed = true;
                             item.notCompleted = false;
+                            achievementImage.SendMessage("getAchievementInfo", item);
+                            achievementImage.SendMessage("showAchievement", true);
+                            Debug.Log("You completed the level in time! Congrations!");
                             PlayerPrefs.SetInt("Level1_0", 1);
                             Debug.Log("Achievement earned: " + item.achievementName);
                         }
@@ -156,6 +163,9 @@ public class AchievementChecker : MonoBehaviour
                         {
                             item.completed = true;
                             item.notCompleted = false;
+                            achievementImage.SendMessage("getAchievementInfo", item);
+                            achievementImage.SendMessage("showAchievement", true);
+                            Debug.Log("You didnt die too many times! Congrations!");
                             PlayerPrefs.SetInt("Level1_3", 1);
                             Debug.Log("Achivement earned: " + item.achievementName);
                         }
@@ -200,6 +210,8 @@ public class AchievementChecker : MonoBehaviour
                             item.completed = true;
                             item.notCompleted = false;
                             //item.notCompleted = false;
+                            achievementImage.SendMessage("getAchievementInfo", item);
+                            achievementImage.SendMessage("showAchievement", true);
                             Debug.Log("Youve jumped a lot. Here's an achievement");
                         }
                     }
