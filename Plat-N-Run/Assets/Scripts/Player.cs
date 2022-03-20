@@ -58,6 +58,8 @@ public class Player : MonoBehaviour
     public int jumpAmount;
     //[Tooltip("Total time for the current run")]
     //public float totalTime;
+    [Tooltip("How many collectibles the player has collected currently. Will be used for the collectible achievement")]
+    public int collectiblesCollected;
 
     [Header("Falling variables")]
     [Tooltip("How much the downforce when in the air to bring the character back to the ground")]
@@ -193,6 +195,7 @@ public class Player : MonoBehaviour
         bigBulkyMan = false;
         agileGirl = false;
         parkourMan = false;
+        collectiblesCollected = 0;
         if(gameObject.name == "Player")
         {
             defaultGuy = true;
@@ -735,5 +738,13 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Collectible 1" || other.tag == "Collectible 2" || other.tag == "Collectible 3" || other.tag == "Collectible 4" || other.tag == "Collectible 5" || other.tag == "Collectible 6")
+        {
+            collectiblesCollected += 1;
+            Debug.Log(collectiblesCollected);
+        }
     }
 }

@@ -25,6 +25,8 @@ public class Achievement
     public string achievementName;
     [Tooltip("description of the achievement")]
     public string achievementDescription;
+    [Tooltip("Tag used for saving into player prefabs")]
+    public string tag;
 
     [Header("Special Achievements")]
     //for special achievements only
