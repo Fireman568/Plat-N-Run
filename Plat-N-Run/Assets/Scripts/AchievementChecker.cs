@@ -23,7 +23,7 @@ public class AchievementChecker : MonoBehaviour
     public bool level1_5;
     public bool level1_6;
     public bool level1_7;
-
+    public bool special_0;
 
     //get the current scene to retrieve the scene name
     private Scene scene;
@@ -54,6 +54,8 @@ public class AchievementChecker : MonoBehaviour
         level1_5 = PlayerPrefs.GetInt("Level1_5") == 1 ? true : false;
         level1_6 = PlayerPrefs.GetInt("Level1_6") == 1 ? true : false;
         level1_7 = PlayerPrefs.GetInt("Level1_7") == 1 ? true : false;
+        special_0 = PlayerPrefs.GetInt("Special_0") == 1 ? true : false;
+        
         //level1Achievements = new List<Achievement>();
         //level2Achievements = new List<Achievement>();
         //level3Achievements = new List<Achievement>();
@@ -103,6 +105,14 @@ public class AchievementChecker : MonoBehaviour
                 item.notCompleted = false;
             }
         }
+        foreach(Achievement item in special)
+        {
+            if (item.tag == "Special_0" && special_0)
+            {
+                item.completed = true;
+                item.notCompleted = false;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -128,6 +138,7 @@ public class AchievementChecker : MonoBehaviour
                         {
                             item.completed = true;
                             item.notCompleted = false;
+                            achievementImage.SetActive(true);
                             achievementImage.SendMessage("getAchievementInfo", item);
                             achievementImage.SendMessage("showAchievement", true);
                             Debug.Log("You completed the level in time! Congrations!");
@@ -142,6 +153,9 @@ public class AchievementChecker : MonoBehaviour
                         {
                             item.completed = true;
                             item.notCompleted = false;
+                            achievementImage.SetActive(true);
+                            achievementImage.SendMessage("getAchievementInfo", item);
+                            achievementImage.SendMessage("showAchievement", true);
                             PlayerPrefs.SetInt("Level1_1", 1);
                             Debug.Log("Achievement earned: " + item.achievementName);
                         }
@@ -152,6 +166,9 @@ public class AchievementChecker : MonoBehaviour
                         {
                             item.completed = true;
                             item.notCompleted = false;
+                            achievementImage.SetActive(true);
+                            achievementImage.SendMessage("getAchievementInfo", item);
+                            achievementImage.SendMessage("showAchievement", true);
                             PlayerPrefs.SetInt("Level1_2", 1);
                             Debug.Log("Achievement earned: " + item.achievementName);
                         }
@@ -163,6 +180,7 @@ public class AchievementChecker : MonoBehaviour
                         {
                             item.completed = true;
                             item.notCompleted = false;
+                            achievementImage.SetActive(true);
                             achievementImage.SendMessage("getAchievementInfo", item);
                             achievementImage.SendMessage("showAchievement", true);
                             Debug.Log("You didnt die too many times! Congrations!");
@@ -210,8 +228,10 @@ public class AchievementChecker : MonoBehaviour
                             item.completed = true;
                             item.notCompleted = false;
                             //item.notCompleted = false;
+                            achievementImage.SetActive(true);
                             achievementImage.SendMessage("getAchievementInfo", item);
                             achievementImage.SendMessage("showAchievement", true);
+                            PlayerPrefs.SetInt("Special_0", 1);
                             Debug.Log("Youve jumped a lot. Here's an achievement");
                         }
                     }

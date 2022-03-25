@@ -24,10 +24,11 @@ public class AchievementTabDisplay : MonoBehaviour
         if (showAch)
         {
             timer += Time.deltaTime;
-            achievementImage.SetActive(true);
+            //achievementImage.SetActive(true);
         }
         if(timer >= timerThreshold)
         {
+            achievementImage.SetActive(false);
             showAch = !showAch;
             timer = 0;
         }

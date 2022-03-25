@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
     //public float totalTime;
     [Tooltip("How many collectibles the player has collected currently. Will be used for the collectible achievement")]
     public int collectiblesCollected;
+    
 
     [Header("Falling variables")]
     [Tooltip("How much the downforce when in the air to bring the character back to the ground")]
@@ -166,7 +167,41 @@ public class Player : MonoBehaviour
     public Transform VerticalSpawnPoint;
     [Tooltip("The reference to the camera attached to the player")]
     public Camera playerCamera;
+    public GameObject agileGirlCooldown;
+
+    //UI text for everyone except agile girl
+    [Tooltip("The UI text for the cooldown of the first vertical wall")]
+    public TextMeshProUGUI vWall1CD;
+    public TextMeshProUGUI v1CDText;
+    [Tooltip("The UI text for the cooldown of the second vertical wall")]
+    public TextMeshProUGUI vWall2CD;
+    public TextMeshProUGUI v2CDText;
     
+    [Tooltip("The UI text for the cooldown of the horizontal wall")]
+    public TextMeshProUGUI hWall;
+    public TextMeshProUGUI hWText;
+    [Tooltip("The UI text for parkour man when played")]
+    public TextMeshProUGUI dash1;
+    public TextMeshProUGUI d1Text;
+    [Tooltip("The UI text for the parkour man when played")]
+    public TextMeshProUGUI dash2;
+    public TextMeshProUGUI d2Text;
+
+    // UI text for the agile girl
+    [Tooltip("The UI text for the cooldown of the first vertical wall")]
+    public TextMeshProUGUI agilevWall1CD;
+    public TextMeshProUGUI agilev1CDText;
+    [Tooltip("The UI text for the cooldown of the second vertical wall")]
+    public TextMeshProUGUI agilevWall2CD;
+    public TextMeshProUGUI agilev2CDText;
+    [Tooltip("The UI text for the cooldown of the third vertical wall (this is only in the case of the agile girl)")]
+    public TextMeshProUGUI agilevWall3CD;
+    public TextMeshProUGUI agilev3CDText;
+    [Tooltip("The UI text for the cooldown of the horizontal wall")]
+    public TextMeshProUGUI agilehWall;
+    public TextMeshProUGUI agilehWText;
+    
+
     [Tooltip("The reference to the transform of the spawnPoint ")]
     public Transform groundDetect;
 
@@ -196,20 +231,56 @@ public class Player : MonoBehaviour
         agileGirl = false;
         parkourMan = false;
         collectiblesCollected = 0;
+        agileGirlCooldown.SetActive(false);
+
+        vWall1CD.text = "";
+        v1CDText.text = "";
+        vWall2CD.text = "";
+        v2CDText.text = "";
+        
+        hWall.text = "";
+        hWText.text = "";
+
+        agilevWall1CD.text = "";
+        agilev1CDText.text = "";
+        agilevWall2CD.text = "";
+        agilev2CDText.text = "";
+        agilevWall3CD.text = "";
+        agilev3CDText.text = "";
+        agilehWall.text = "";
+        agilehWText.text = "";
+
+        dash1.text = "";
+        d1Text.text = "";
+        dash2.text = "";
+        d2Text.text = "";
         if(gameObject.name == "Player")
         {
+            vWall1CD.text = "v wall 1";
+            vWall2CD.text = "v wall 2";
+            hWall.text = "h wall";
             defaultGuy = true;
         }
         else if(gameObject.name == "BigBulkyMan")
         {
+            vWall1CD.text = "v wall 1";
+            vWall2CD.text = "v wall 2";
+            hWall.text = "h wall";
             bigBulkyMan = true;
         }
         else if(gameObject.name == "AgileQuickGirl")
         {
+            agileGirlCooldown.SetActive(true);
+            agilevWall1CD.text = "v wall 1";
+            agilevWall2CD.text = "v wall 2";
+            agilevWall3CD.text = "V Wall 3";
+            agilehWall.text = "h wall";
             agileGirl = true;
         }
         else
         {
+            dash1.text = "dash 1";
+            dash2.text = "dash 2";
             parkourMan = true;
         }
         if(sprintingVolume != null)
@@ -241,7 +312,7 @@ public class Player : MonoBehaviour
         if (isSprinting)
         {
             timeSinceStoppedSprinting = 0;
-            if(timeSinceStartedSprinting == 0 && sprintingVolume != null)
+            if (timeSinceStartedSprinting == 0 && sprintingVolume != null)
             {
                 lastVolumeValue = sprintingVolume.weight;
             }
@@ -250,7 +321,7 @@ public class Player : MonoBehaviour
         else
         {
             timeSinceStartedSprinting = 0;
-            if(timeSinceStoppedSprinting == 0 && sprintingVolume != null)
+            if (timeSinceStoppedSprinting == 0 && sprintingVolume != null)
             {
                 lastVolumeValue = sprintingVolume.weight;
             }
@@ -263,7 +334,7 @@ public class Player : MonoBehaviour
         if (isSliding)
         {
             slidingTime += Time.deltaTime;
-            if(slidingTime > maxSlidingTime)
+            if (slidingTime > maxSlidingTime)
             {
                 timeSinceSlide = 0;
                 isSliding = false;
@@ -282,7 +353,7 @@ public class Player : MonoBehaviour
         {
             dashingTime += Time.deltaTime;
         }
-        if(dashingTime >= dashingTimeThreshhold)
+        if (dashingTime >= dashingTimeThreshhold)
         {
             dashing = false;
             dashingTime = 0;
@@ -296,12 +367,12 @@ public class Player : MonoBehaviour
         {
             dash2Time += Time.deltaTime;
         }
-        if(dash1Time >= dashTimeThreshhold)
+        if (dash1Time >= dashTimeThreshhold)
         {
             dash1Time = 0;
             dash1Used = false;
         }
-        if(dash2Time >= dashTimeThreshhold)
+        if (dash2Time >= dashTimeThreshhold)
         {
             dash2Time = 0;
             dash2Used = false;
@@ -322,12 +393,105 @@ public class Player : MonoBehaviour
         {
             wasPressedRight = true;
         }
-        if(numTimesJumped == 2)
+        if (numTimesJumped == 2)
         {
             canJump = false;
         }
         //timeText.text = "Time: " + totalTime;
         //Debug.Log(levelTime);
+
+        if (defaultGuy || bigBulkyMan)
+        {
+            if (verticalWall1Time > verticalWallCD)
+            {
+                v1CDText.text = "Ready!";
+            }
+            else
+            {
+                float v = verticalWallCD - verticalWall1Time;
+                v1CDText.text = v.ToString("F2");
+            }
+            if (verticalWall2Time > verticalWallCD)
+            {
+                v2CDText.text = "Ready!";
+            }
+            else
+            {
+                float v = verticalWallCD - verticalWall2Time;
+                v2CDText.text = v.ToString("F2");
+            }
+            if (horWallTime > horizontalWallCD)
+            {
+                hWText.text = "Ready!";
+            }
+            else
+            {
+                float v = horizontalWallCD - horWallTime;
+                
+                hWText.text = v.ToString("F2");
+            }
+        }
+        else if (agileGirl)
+        {
+            if (verticalWall1Time > verticalWallCD)
+            {
+                agilev1CDText.text = "Ready!";
+            }
+            else
+            {
+                float v = verticalWallCD - verticalWall1Time;
+                agilev1CDText.text = v.ToString("F2");
+            }
+            if (verticalWall2Time > verticalWallCD)
+            {
+                agilev2CDText.text = "Ready!";
+            }
+            else
+            {
+                float v = verticalWallCD - verticalWall2Time;
+                agilev2CDText.text = v.ToString("F2");
+            }
+            if (verticalWall3Time > verticalWallCD)
+            {
+                agilev3CDText.text = "Ready!";
+            }
+            else
+            {
+                float v = verticalWallCD - verticalWall3Time;
+                agilev3CDText.text = v.ToString("F2");
+            }
+            if (horWallTime > horizontalWallCD)
+            {
+                agilehWText.text = "Ready!";
+            }
+            else
+            {
+                float v = horizontalWallCD - horWallTime;
+                agilehWText.text = v.ToString("F2");
+            }
+        }
+        else
+        {
+            if(dash1Time > dashTimeThreshhold)
+            {
+                dash1.text = "Ready!";
+            }
+            else
+            {
+                float v = dashTimeThreshhold - dash1Time;
+                dash1.text = v.ToString("F2");
+            }
+            if (dash2Time > dashTimeThreshhold)
+            {
+                dash2.text = "Ready!";
+            }
+            else
+            {
+                float v = dashTimeThreshhold - dash1Time;
+                dash2.text = v.ToString("F2");
+            }
+        }
+        
     }
     public void FixedUpdate()
     {
