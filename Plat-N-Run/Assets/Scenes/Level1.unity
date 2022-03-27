@@ -1725,6 +1725,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 38968100}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &223662202 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 497510006649976573, guid: 87150e43abd8a9e4986b838a040524be,
+    type: 3}
+  m_PrefabInstance: {fileID: 38968100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223662201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acda40087c9aef3419c87907c9562e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &231153297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2250,6 +2262,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66b7b84f850502c47a8fdc08d3d8c6b2, type: 3}
+--- !u!1 &271040213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 86557947, guid: ea547f6ab35ac4c45a0f94e2f921c6b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 859627772827024403}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &274560168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7403976577910023830, guid: 66b7b84f850502c47a8fdc08d3d8c6b2,
@@ -5446,10 +5464,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoader: {fileID: 773436785}
+  achievementText: {fileID: 1048966395}
+  achievements: {fileID: 223662202}
   achievementChecker: {fileID: 223662201}
   pauseMenu: {fileID: 912380577}
+  achievementPage: {fileID: 1508822368}
   player: {fileID: 855182700}
   timeText: {fileID: 1915208348}
+  wallCooldowns: {fileID: 271040213}
+  agileWallCooldowns: {fileID: 1595095745}
   animation: {fileID: 0}
   transitionTime: 1
   ableToPause: 1
@@ -7718,6 +7741,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046807174}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1048966395 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1048966395, guid: ea547f6ab35ac4c45a0f94e2f921c6b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 859627772827024403}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1058314633
 GameObject:
   m_ObjectHideFlags: 0
@@ -8911,7 +8946,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36724
+  m_Name: pb_Mesh17902
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9774,6 +9809,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66b7b84f850502c47a8fdc08d3d8c6b2, type: 3}
+--- !u!1 &1508822368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 859627773853504509, guid: ea547f6ab35ac4c45a0f94e2f921c6b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 859627772827024403}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1529847712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7403976577910023830, guid: 66b7b84f850502c47a8fdc08d3d8c6b2,
@@ -12970,6 +13011,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 306126887, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 773436786}
     - target: {fileID: 1596581345, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

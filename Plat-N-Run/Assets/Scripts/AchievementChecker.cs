@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
 public class AchievementChecker : MonoBehaviour
 {
     //lists of achievements per level as well as special achievements
@@ -45,6 +46,7 @@ public class AchievementChecker : MonoBehaviour
         scene = SceneManager.GetActiveScene();
         level = scene.name;
         levelDone = false;
+        player = GameObject.Find("Player").GetComponent<Player>();
         playerName = player.name;
         level1_0 = PlayerPrefs.GetInt("Level1_0") == 1 ? true : false;
         level1_1 = PlayerPrefs.GetInt("Level1_1") == 1 ? true : false;
@@ -122,7 +124,6 @@ public class AchievementChecker : MonoBehaviour
     }
     public void checkAchievements()
     {
-        Debug.Log("This is the level name: " + level);
         if (level == "Level1")
         {
             foreach (Achievement item in level1Achievements)
@@ -141,9 +142,7 @@ public class AchievementChecker : MonoBehaviour
                             achievementImage.SetActive(true);
                             achievementImage.SendMessage("getAchievementInfo", item);
                             achievementImage.SendMessage("showAchievement", true);
-                            Debug.Log("You completed the level in time! Congrations!");
                             PlayerPrefs.SetInt("Level1_0", 1);
-                            Debug.Log("Achievement earned: " + item.achievementName);
                         }
                     }
                     else if (item.achievementType == Achievement.Types.ONE_COLLECTIBLE)
@@ -157,7 +156,7 @@ public class AchievementChecker : MonoBehaviour
                             achievementImage.SendMessage("getAchievementInfo", item);
                             achievementImage.SendMessage("showAchievement", true);
                             PlayerPrefs.SetInt("Level1_1", 1);
-                            Debug.Log("Achievement earned: " + item.achievementName);
+                            
                         }
                     }
                     else if (item.achievementType == Achievement.Types.ALL_COLLECTIBLE)
@@ -170,7 +169,7 @@ public class AchievementChecker : MonoBehaviour
                             achievementImage.SendMessage("getAchievementInfo", item);
                             achievementImage.SendMessage("showAchievement", true);
                             PlayerPrefs.SetInt("Level1_2", 1);
-                            Debug.Log("Achievement earned: " + item.achievementName);
+                            
                         }
                     }
                     else if (item.achievementType == Achievement.Types.UNDER_DEATH && levelDone == true)
@@ -183,9 +182,9 @@ public class AchievementChecker : MonoBehaviour
                             achievementImage.SetActive(true);
                             achievementImage.SendMessage("getAchievementInfo", item);
                             achievementImage.SendMessage("showAchievement", true);
-                            Debug.Log("You didnt die too many times! Congrations!");
+                            
                             PlayerPrefs.SetInt("Level1_3", 1);
-                            Debug.Log("Achivement earned: " + item.achievementName);
+                           
                         }
                     }
                     else if (item.achievementType == Achievement.Types.CHARACTER_PASS && levelDone == true)
@@ -210,7 +209,7 @@ public class AchievementChecker : MonoBehaviour
                             }
                             item.completed = true;
                             item.notCompleted = false;
-                            Debug.Log("Achivement earned: " + item.achievementName);
+                            
                         }
                     }
 
@@ -232,7 +231,7 @@ public class AchievementChecker : MonoBehaviour
                             achievementImage.SendMessage("getAchievementInfo", item);
                             achievementImage.SendMessage("showAchievement", true);
                             PlayerPrefs.SetInt("Special_0", 1);
-                            Debug.Log("Youve jumped a lot. Here's an achievement");
+                            
                         }
                     }
                 }
@@ -242,7 +241,6 @@ public class AchievementChecker : MonoBehaviour
     }
     public void changeLevelBool()
     {
-        Debug.Log("I have switched the level bool");
         levelDone = !levelDone;
     }
 }
