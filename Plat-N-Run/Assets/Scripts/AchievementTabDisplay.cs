@@ -14,15 +14,19 @@ public class AchievementTabDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        achievementImage.SetActive(false);
+        achievementImage.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (achievementImage.activeSelf)
+        {
+            Debug.Log("achImage on");
+        }
         if (showAch)
         {
+            Debug.Log("stupid thingy should be showing");
             timer += Time.deltaTime;
             //achievementImage.SetActive(true);
         }

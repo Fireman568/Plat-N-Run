@@ -17,6 +17,7 @@ public class LevelSwitcherForPlayer : MonoBehaviour
     public GameObject player;
     public GameObject bigBulkyMan;
     public GameObject agileQuickGirl;
+    public GameObject parkourMan;
     public GameObject timeText;
     public GameObject wallCooldowns;
     public GameObject agileWallCooldowns;
@@ -33,6 +34,10 @@ public class LevelSwitcherForPlayer : MonoBehaviour
         timerThing = this.gameObject;
         scene = SceneManager.GetActiveScene();
         if (player.activeSelf || bigBulkyMan.activeSelf)
+        {
+            wallCooldowns.SetActive(true);
+        }
+        else if (parkourMan.activeSelf)
         {
             wallCooldowns.SetActive(true);
         }
@@ -53,10 +58,10 @@ public class LevelSwitcherForPlayer : MonoBehaviour
             {
                 bigBulkyMan.GetComponent<Player>().enabled = false;
             }
-            //else if (parkourMan.activeSelf)
-            //{
-
-            //}
+            else if (parkourMan.activeSelf)
+            {
+                parkourMan.GetComponent<Player>().enabled = false;
+            }
             else
             {
                 agileQuickGirl.GetComponent<Player>().enabled = false;
@@ -93,10 +98,10 @@ public class LevelSwitcherForPlayer : MonoBehaviour
         {
             bigBulkyMan.GetComponent<Player>().enabled = true;
         }
-        //else if (parkourMan.activeSelf)
-        //{
-
-        //}
+        else if (parkourMan.activeSelf)
+        {
+            parkourMan.GetComponent<Player>().enabled = true;
+        }
         else
         {
             agileQuickGirl.GetComponent<Player>().enabled = true;

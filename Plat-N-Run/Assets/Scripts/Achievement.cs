@@ -6,6 +6,8 @@ using UnityEngine;
 public class Achievement
 {   
     [Header("Normal Acheivements")]
+    [Tooltip("name of the achievement")]
+    public string achievementName;
     [Tooltip("type of achievement")]
     public Types achievementType;
     [Tooltip("whether or not the achievement is completed")]
@@ -21,8 +23,6 @@ public class Achievement
     public float timeThreshold;
     [Tooltip("The name of the character to check against to see if the player completed it with a specific character. Will be checked at the end of the level")]
     public string characterName;
-    [Tooltip("name of the achievement")]
-    public string achievementName;
     [Tooltip("description of the achievement")]
     public string achievementDescription;
     [Tooltip("Tag used for saving into player prefabs")]

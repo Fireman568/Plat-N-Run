@@ -279,6 +279,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            Debug.Log("Parkour man is being read");
             dash1.text = "dash 1";
             dash2.text = "dash 2";
             parkourMan = true;
@@ -474,21 +475,21 @@ public class Player : MonoBehaviour
         {
             if(dash1Time > dashTimeThreshhold)
             {
-                dash1.text = "Ready!";
+                d1Text.text = "Ready!";
             }
             else
             {
                 float v = dashTimeThreshhold - dash1Time;
-                dash1.text = v.ToString("F2");
+                d1Text.text = v.ToString("F2");
             }
             if (dash2Time > dashTimeThreshhold)
             {
-                dash2.text = "Ready!";
+                d2Text.text = "Ready!";
             }
             else
             {
-                float v = dashTimeThreshhold - dash1Time;
-                dash2.text = v.ToString("F2");
+                float v = dashTimeThreshhold - dash2Time;
+                d2Text.text = v.ToString("F2");
             }
         }
         
@@ -804,11 +805,13 @@ public class Player : MonoBehaviour
                     {
                         characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
                         characterMovement += Vector3.up * jumpingMultiplier;
+                        jumpAmount += 1;
                     }
                     else
                     {
                         characterMovement = new Vector3(characterMovement.x, 0, characterMovement.z);
                         characterMovement += wallRunComp.GetWallJumpDirection() * wallJumpMultiplier;
+                        jumpAmount += 1;
                     }
                     numTimesJumped += 1;
                 }
