@@ -130,17 +130,24 @@ MonoBehaviour:
   sprintingMultiplier: 1.25
   sprintingJumpMultiplier: 0
   slidingMultiplier: 2
+  dashMultiplier: 0
   slidingTime: 0
   maxSlidingTime: 0.5
   slidingCooldown: 2
   timeSinceSlide: 0
+  dashing: 0
+  dashTimeThreshhold: 0
+  levelTime: 0
+  deathAmount: 0
+  jumpAmount: 0
+  collectiblesCollected: 0
   grav: 20
   currentVelY: 0
   fallingSpeed: 1
   timeSinceFallenOff: 0
   fallOffThreshhold: 0.2
   health: 3
-  healthText: {fileID: 0}
+  timeText: {fileID: 0}
   defaultGuy: 0
   bigBulkyMan: 0
   agileGirl: 0
@@ -155,14 +162,23 @@ MonoBehaviour:
   horizontalWallCD: 4
   verticalWall1Time: 5
   verticalWall2Time: 5
+  verticalWall3Time: 4
   horWallTime: 5
   verticalWall2Placable: 0
+  dashingTime: 0
+  dashingTimeThreshhold: 0
+  dash1Time: 0
+  dash2Time: 0
+  dash1Used: 0
+  dash2Used: 0
   horizontalStartingPos: {x: 0, y: 0, z: 0}
   wasPressedLeft: 0
   wasPressedRight: 0
   jumpingMultiplier: 13
   wallJumpMultiplier: 15
   jumpPadMultiplier: 10
+  canJump: 0
+  numTimesJumped: 0
   notRespawning: 1
   controller: {fileID: 2960674524038898233}
   verticalWall: {fileID: 2578717210624259787, guid: 6fc2d4c743f308e4f9e230176c15f58e,
@@ -173,6 +189,25 @@ MonoBehaviour:
   HorizontalSpawnPoint: {fileID: 2960674525486479287}
   VerticalSpawnPoint: {fileID: 4333271317278235243}
   playerCamera: {fileID: 2960674524292552029}
+  agileGirlCooldown: {fileID: 0}
+  vWall1CD: {fileID: 0}
+  v1CDText: {fileID: 0}
+  vWall2CD: {fileID: 0}
+  v2CDText: {fileID: 0}
+  hWall: {fileID: 0}
+  hWText: {fileID: 0}
+  dash1: {fileID: 0}
+  d1Text: {fileID: 0}
+  dash2: {fileID: 0}
+  d2Text: {fileID: 0}
+  agilevWall1CD: {fileID: 0}
+  agilev1CDText: {fileID: 0}
+  agilevWall2CD: {fileID: 0}
+  agilev2CDText: {fileID: 0}
+  agilevWall3CD: {fileID: 0}
+  agilev3CDText: {fileID: 0}
+  agilehWall: {fileID: 0}
+  agilehWText: {fileID: 0}
   groundDetect: {fileID: 2960674525124999534}
   sprintingVolume: {fileID: 4333271316962082531}
   cameraTransitionDuration: 0.25
@@ -537,7 +572,7 @@ BoxCollider:
   m_GameObject: {fileID: 2960674525486479284}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
@@ -630,7 +665,7 @@ BoxCollider:
   m_GameObject: {fileID: 4333271317278235240}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}

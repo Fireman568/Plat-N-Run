@@ -214,6 +214,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11530660}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &15674923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 15674923, guid: ea547f6ab35ac4c45a0f94e2f921c6b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 859627772827024403}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &34614611
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +504,7 @@ PrefabInstance:
     - target: {fileID: 6734756754607462455, guid: ec565ebe6e51f39489fa763b938af84b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec565ebe6e51f39489fa763b938af84b, type: 3}
@@ -5645,13 +5657,34 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773436781}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de64eb799b30f714badd8e8394fd7f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoad: {fileID: 773436785}
   achievementChecker: {fileID: 0}
+  resultsScreen: {fileID: 0}
+  player: {fileID: 0}
+  bigMan: {fileID: 0}
+  agileGirl: {fileID: 0}
+  parkourMan: {fileID: 0}
+  timeText: {fileID: 0}
+  bestTimeText: {fileID: 0}
+  default0BestTime: 0
+  big0BestTime: 0
+  agile0BestTime: 0
+  parkour0BestTime: 0
+  default1BestTime: 0
+  big1BestTime: 0
+  agile1BestTime: 0
+  parkour1BestTime: 0
+  default2BestTime: 0
+  big2BestTime: 0
+  agile2BestTime: 0
+  parkour2BestTime: 0
+  bestTime: 0
+  timeFromPlayer: 0
   sceneToLoad: 3
   scene:
     m_Handle: 0
@@ -6645,6 +6678,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 859627772827024403}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &916861700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1816323538, guid: ea547f6ab35ac4c45a0f94e2f921c6b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 859627772827024403}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &931742259
 GameObject:
   m_ObjectHideFlags: 0
@@ -6954,7 +6999,7 @@ PrefabInstance:
     - target: {fileID: 1528042465656063846, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1528042465656063847, guid: 9ea8a86ef40f742479c2689c80760ee5,
         type: 3}
@@ -8496,6 +8541,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098533830}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1133196478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1133196478, guid: ea547f6ab35ac4c45a0f94e2f921c6b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 859627772827024403}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1169344697
 GameObject:
   m_ObjectHideFlags: 0
@@ -10650,6 +10701,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelLoad: {fileID: 773436785}
   achievementChecker: {fileID: 223662201}
+  resultsScreen: {fileID: 1133196478}
+  player: {fileID: 855182700}
+  bigMan: {fileID: 2140807435}
+  agileGirl: {fileID: 1765811311}
+  parkourMan: {fileID: 1391752512}
+  timeText: {fileID: 15674923}
+  bestTimeText: {fileID: 916861700}
+  default0BestTime: 0
+  big0BestTime: 0
+  agile0BestTime: 0
+  parkour0BestTime: 0
+  default1BestTime: 0
+  big1BestTime: 0
+  agile1BestTime: 0
+  parkour1BestTime: 0
+  default2BestTime: 0
+  big2BestTime: 0
+  agile2BestTime: 0
+  parkour2BestTime: 0
+  bestTime: 0
+  timeFromPlayer: 0
   sceneToLoad: 3
   scene:
     m_Handle: 0
@@ -13435,34 +13507,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 86557947, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 33331872, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1617678838}
+    - target: {fileID: 33331872, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 306126887, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 773436786}
-    - target: {fileID: 336851756, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1043046420, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1043046423, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
+    - target: {fileID: 360029972, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
       propertyPath: m_text
-      value: Dash 1
+      value: next level
       objectReference: {fileID: 0}
-    - target: {fileID: 1538738160, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1538738161, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
-      propertyPath: m_text
-      value: Dash 2
-      objectReference: {fileID: 0}
+    - target: {fileID: 1543731818, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1617678838}
     - target: {fileID: 1596581345, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -13471,10 +13535,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 773436787}
-    - target: {fileID: 1723413510, guid: ea547f6ab35ac4c45a0f94e2f921c6b5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 859627772320613144, guid: ea547f6ab35ac4c45a0f94e2f921c6b5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -13585,16 +13645,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 773436787}
-    - target: {fileID: 859627774141050758, guid: ea547f6ab35ac4c45a0f94e2f921c6b5,
-        type: 3}
-      propertyPath: showAch
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 859627774141050758, guid: ea547f6ab35ac4c45a0f94e2f921c6b5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 859627774232317111, guid: ea547f6ab35ac4c45a0f94e2f921c6b5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

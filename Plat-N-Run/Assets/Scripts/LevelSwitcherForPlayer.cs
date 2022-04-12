@@ -85,6 +85,10 @@ public class LevelSwitcherForPlayer : MonoBehaviour
         {
             wallCooldowns.SetActive(true);
         }
+        else if (parkourMan.activeSelf)
+        {
+            wallCooldowns.SetActive(true);
+        }
         else
         {
             agileWallCooldowns.SetActive(true);
