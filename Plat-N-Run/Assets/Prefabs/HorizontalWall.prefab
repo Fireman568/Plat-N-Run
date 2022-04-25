@@ -113,8 +113,6 @@ MonoBehaviour:
   colliding: 0
   prevPos: {x: 0, y: 0, z: 0}
   placed: 0
-  defaultPlayer: 0
-  agilePlayer: 0
   deathTime: 2
 --- !u!54 &-3879511356455525988
 Rigidbody:

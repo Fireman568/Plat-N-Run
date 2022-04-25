@@ -44,111 +44,234 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level1Achievements:
-  - achievementType: 0
+  - achievementName: 1st Level Speedrunner
+    achievementType: 0
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 60
     characterName: 
     achievementDescription: Pass the level in less than 60 seconds!
+    tag: Level1_0
     deathAmount: 0
     numOfJumpsThreshold: 0
     numOfWallsThreshold: 0
-  - achievementType: 1
+  - achievementName: Finders Keepers
+    achievementType: 1
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 0
     collectibleAmount: 1
     timeThreshold: 0
     characterName: 
     achievementDescription: Collect 1 collectible in the level!
+    tag: Level1_1
     deathAmount: 0
     numOfJumpsThreshold: 0
     numOfWallsThreshold: 0
-  - achievementType: 2
+  - achievementName: Greedy
+    achievementType: 2
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 0
-    collectibleAmount: 3
+    collectibleAmount: 2
     timeThreshold: 0
     characterName: 
     achievementDescription: Collect all of the collectibles in the level!
+    tag: Level1_2
     deathAmount: 0
     numOfJumpsThreshold: 0
     numOfWallsThreshold: 0
-  - achievementType: 3
+  - achievementName: Loving Life
+    achievementType: 3
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 5
     collectibleAmount: 0
     timeThreshold: 0
     characterName: 
     achievementDescription: Beat the level without dying more than 5 times!
+    tag: Level1_3
     deathAmount: 0
     numOfJumpsThreshold: 0
     numOfWallsThreshold: 0
-  - achievementType: 4
+  - achievementName: Player pass
+    achievementType: 4
+    completed: 0
+    notCompleted: 1
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: Player
+    achievementDescription: Beat the level using Default Guy!
+    tag: Level1_4
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementName: Strong Pass
+    achievementType: 4
+    completed: 0
+    notCompleted: 1
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: BigBulkyMan
+    achievementDescription: Beat the level using Big Bulky Man!
+    tag: Level1_5
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementName: Fast Pass
+    achievementType: 4
+    completed: 0
+    notCompleted: 1
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: AgileQuickGirl
+    achievementDescription: Beat the level using Agile Quick Girl
+    tag: Level1_6
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementName: Parkour!
+    achievementType: 4
+    completed: 0
+    notCompleted: 1
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: ParkourMan
+    achievementDescription: Beat the level using Parkour Man
+    tag: Level1_7
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  level2Achievements:
+  - achievementName: Level 2 Speedrunner
+    achievementType: 0
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 90
+    characterName: 
+    achievementDescription: Clear the level in less than 90 seconds
+    tag: Level2_0
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementName: Fiscal
+    achievementType: 1
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementDescription: Pick up one collectible in the level
+    tag: Level2_1
+    deathAmount: 0
+    numOfJumpsThreshold: 7
+    numOfWallsThreshold: 0
+  - achievementName: Extra Fiscal
+    achievementType: 2
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 0
+    collectibleAmount: 2
+    timeThreshold: 0
+    characterName: 
+    achievementDescription: Collect all the collectibles in the level
+    tag: Level2_2
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementName: Hate Death
+    achievementType: 3
+    completed: 0
+    notCompleted: 0
+    deathThreshold: 7
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementDescription: Clear the level without dying more than 7 times
+    tag: Level2_3
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementName: Player Pass 2
+    achievementType: 4
     completed: 0
     notCompleted: 0
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 0
     characterName: Player
-    achievementDescription: Beat the level using Default Guy!
+    achievementDescription: Clear the level with the default man
+    tag: Level2_4
     deathAmount: 0
     numOfJumpsThreshold: 0
     numOfWallsThreshold: 0
-  - achievementType: 4
+  - achievementName: Big Pass 2
+    achievementType: 4
     completed: 0
     notCompleted: 0
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 0
-    characterName: Big Bulky Man
-    achievementDescription: Beat the level using Big Bulky Man!
+    characterName: BigBulkyMan
+    achievementDescription: Clear the level with big bulky man
+    tag: Level2_5
     deathAmount: 0
     numOfJumpsThreshold: 0
     numOfWallsThreshold: 0
-  - achievementType: 4
+  - achievementName: Agile pass 2
+    achievementType: 4
     completed: 0
     notCompleted: 0
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 0
-    characterName: Agile Quick Girl
-    achievementDescription: Beat the level using Agile Quick Girl
+    characterName: AgileQuickGirl
+    achievementDescription: Clear the level with agile quick girl
+    tag: Level2_6
     deathAmount: 0
     numOfJumpsThreshold: 0
     numOfWallsThreshold: 0
-  - achievementType: 4
+  - achievementName: Parkour! 2
+    achievementType: 4
     completed: 0
     notCompleted: 0
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 0
-    characterName: Parkour Guy
-    achievementDescription: Beat the level using Parkour Guy
+    characterName: ParkourMan
+    achievementDescription: Clear the level with parkour man
+    tag: Level2_7
     deathAmount: 0
     numOfJumpsThreshold: 0
     numOfWallsThreshold: 0
-  level2Achievements: []
   level3Achievements: []
   level4Achievements: []
   level5Achievements: []
   special:
-  - achievementType: 5
+  - achievementName: Jumper Connoisour
+    achievementType: 5
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 0
     characterName: 
     achievementDescription: Jump at least 7 Times.
-    deathAmount: 7
-    numOfJumpsThreshold: 0
+    tag: Special_0
+    deathAmount: 0
+    numOfJumpsThreshold: 7
     numOfWallsThreshold: 0
-  - achievementType: 0
+  - achievementName: 
+    achievementType: 5
     completed: 0
     notCompleted: 0
     deathThreshold: 0
@@ -156,8 +279,37 @@ MonoBehaviour:
     timeThreshold: 0
     characterName: 
     achievementDescription: 
+    tag: 
     deathAmount: 0
     numOfJumpsThreshold: 0
     numOfWallsThreshold: 0
-  level: 
+  achievementImage: {fileID: 0}
+  playerActive: 0
+  bigActive: 0
+  agileActive: 0
+  parkourActive: 0
+  level1_0: 0
+  level1_1: 0
+  level1_2: 0
+  level1_3: 0
+  level1_4: 0
+  level1_5: 0
+  level1_6: 0
+  level1_7: 0
+  level2_0: 0
+  level2_1: 0
+  level2_2: 0
+  level2_3: 0
+  level2_4: 0
+  level2_5: 0
+  level2_6: 0
+  level2_7: 0
+  special_0: 0
+  level: Level1
+  playerObj: {fileID: 0}
+  bigBulkyObj: {fileID: 0}
+  agileQuickObj: {fileID: 0}
+  parkourMan: {fileID: 0}
   player: {fileID: 0}
+  levelDone: 0
+  playerName: 

@@ -169,6 +169,8 @@ public class Player : MonoBehaviour
     public Camera playerCamera;
     public GameObject agileGirlCooldown;
 
+    
+
     //UI text for everyone except agile girl
     [Tooltip("The UI text for the cooldown of the first vertical wall")]
     public TextMeshProUGUI vWall1CD;
@@ -217,11 +219,14 @@ public class Player : MonoBehaviour
 
 
     WallRun wallRunComp;
+
+    public int characterPicked;
     
     public void Start()
     {
         // in anticipation of the objective system and character selection, the bool for which character has been selected and which objectives need to be displayed will be set in here at the start of 
         //each scene so the character character is chosen and its subsequent specific movement variables, as well as the specific objectives it needs
+        characterPicked = PlayerPrefs.GetInt("characterPick");
         controller = GetComponent<CharacterController>();
         wallRunComp = GetComponent<WallRun>();
         initialPos = playerCamera.transform.localPosition;
@@ -254,6 +259,10 @@ public class Player : MonoBehaviour
         d1Text.text = "";
         dash2.text = "";
         d2Text.text = "";
+        if(characterPicked == 1)
+        {
+            
+        }
         if(gameObject.name == "Player")
         {
             vWall1CD.text = "v wall 1";

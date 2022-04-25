@@ -39,58 +39,66 @@ public class PortalTeleport : MonoBehaviour
         scene = SceneManager.GetActiveScene();
         resultsScreen.SetActive(false);
         PlayerPrefs.SetInt("Level " + scene.buildIndex + " Complete", 1);
+        default0BestTime = PlayerPrefs.GetFloat("default0BestTime");
+        big0BestTime = PlayerPrefs.GetFloat("big0BestTime");
+        agile0BestTime = PlayerPrefs.GetFloat("agile0BestTime");
+        parkour0BestTime = PlayerPrefs.GetFloat("parkour0BestTime");
         default1BestTime = PlayerPrefs.GetFloat("default1BestTime");
         big1BestTime = PlayerPrefs.GetFloat("big1BestTime");
         agile1BestTime = PlayerPrefs.GetFloat("agile1BestTime");
         parkour1BestTime = PlayerPrefs.GetFloat("parkour1BestTime");
+        default2BestTime = PlayerPrefs.GetFloat("default2BestTime");
+        big2BestTime = PlayerPrefs.GetFloat("big2BestTime");
+        agile2BestTime = PlayerPrefs.GetFloat("agile2bestTime");
+        parkour2BestTime = PlayerPrefs.GetFloat("parkour2BestTime");
 
         if (default0BestTime == 0)
         {
-            default0BestTime = 1000000;
+            default0BestTime = float.MaxValue;
         }
         if (big0BestTime == 0)
         {
-            big0BestTime = 1000000;
+            big0BestTime = float.MaxValue;
         }
         if (agile0BestTime == 0)
         {
-            agile0BestTime = 1000000;
+            agile0BestTime = float.MaxValue;
         }
         if (parkour0BestTime == 0)
         {
-            parkour0BestTime = 1000000;
+            parkour0BestTime = float.MaxValue;
         }
         if (default1BestTime == 0)
         {
-            default1BestTime = 1000000;
+            default1BestTime = float.MaxValue;
         }
         if(big1BestTime == 0)
         {
-            big1BestTime = 1000000;
+            big1BestTime = float.MaxValue;
         }
         if(agile1BestTime == 0)
         {
-            agile1BestTime = 1000000;
+            agile1BestTime = float.MaxValue;
         }
         if(parkour1BestTime == 0)
         {
-            parkour1BestTime = 1000000;
+            parkour1BestTime = float.MaxValue;
         }
         if (default2BestTime == 0)
         {
-            default2BestTime = 1000000;
+            default2BestTime = float.MaxValue;
         }
         if (big2BestTime == 0)
         {
-            big2BestTime = 1000000;
+            big2BestTime = float.MaxValue;
         }
         if (agile2BestTime == 0)
         {
-            agile2BestTime = 1000000;
+            agile2BestTime = float.MaxValue;
         }
         if (parkour2BestTime == 0)
         {
-            parkour2BestTime = 1000000;
+            parkour2BestTime = float.MaxValue;
         }
         PlayerPrefs.Save();
     }
@@ -117,7 +125,7 @@ public class PortalTeleport : MonoBehaviour
                 if (timeFromPlayer < default0BestTime)
                 {
                     bestTime = timeFromPlayer;
-                    PlayerPrefs.SetFloat("default1BestTime", timeFromPlayer);
+                    PlayerPrefs.SetFloat("default0BestTime", timeFromPlayer);
                 }
                 else
                 {
@@ -140,7 +148,7 @@ public class PortalTeleport : MonoBehaviour
                 if (timeFromPlayer < big0BestTime)
                 {
                     bestTime = timeFromPlayer;
-                    PlayerPrefs.SetFloat("big1BestTime", timeFromPlayer);
+                    PlayerPrefs.SetFloat("big0BestTime", timeFromPlayer);
                 }
                 else
                 {
@@ -161,7 +169,7 @@ public class PortalTeleport : MonoBehaviour
                 if (timeFromPlayer < agile0BestTime)
                 {
                     bestTime = timeFromPlayer;
-                    PlayerPrefs.SetFloat("agile1BestTime", timeFromPlayer);
+                    PlayerPrefs.SetFloat("agile0BestTime", timeFromPlayer);
                 }
                 else
                 {
@@ -172,7 +180,7 @@ public class PortalTeleport : MonoBehaviour
                 bestTimeText.text = "Agile Girl Best Time: " + bestTime.ToString();
                 resultsScreen.SetActive(true);
             }
-            else
+            else if(other.name == "ParkourMan")
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
@@ -182,7 +190,7 @@ public class PortalTeleport : MonoBehaviour
                 if (timeFromPlayer < parkour0BestTime)
                 {
                     bestTime = timeFromPlayer;
-                    PlayerPrefs.SetFloat("parkour1BestTime", timeFromPlayer);
+                    PlayerPrefs.SetFloat("parkour0BestTime", timeFromPlayer);
                 }
                 else
                 {
@@ -263,7 +271,7 @@ public class PortalTeleport : MonoBehaviour
                 bestTimeText.text = "Agile Girl Best Time: " + bestTime.ToString();
                 resultsScreen.SetActive(true);
             }
-            else
+            else if(other.name == "ParkourMan")
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
@@ -299,7 +307,7 @@ public class PortalTeleport : MonoBehaviour
                 if (timeFromPlayer < default2BestTime)
                 {
                     bestTime = timeFromPlayer;
-                    PlayerPrefs.SetFloat("default1BestTime", timeFromPlayer);
+                    PlayerPrefs.SetFloat("default2BestTime", timeFromPlayer);
                 }
                 else
                 {
@@ -322,7 +330,7 @@ public class PortalTeleport : MonoBehaviour
                 if (timeFromPlayer < big2BestTime)
                 {
                     bestTime = timeFromPlayer;
-                    PlayerPrefs.SetFloat("big1BestTime", timeFromPlayer);
+                    PlayerPrefs.SetFloat("big2BestTime", timeFromPlayer);
                 }
                 else
                 {
@@ -343,7 +351,7 @@ public class PortalTeleport : MonoBehaviour
                 if (timeFromPlayer < agile2BestTime)
                 {
                     bestTime = timeFromPlayer;
-                    PlayerPrefs.SetFloat("agile1BestTime", timeFromPlayer);
+                    PlayerPrefs.SetFloat("agile2BestTime", timeFromPlayer);
                 }
                 else
                 {
@@ -354,7 +362,7 @@ public class PortalTeleport : MonoBehaviour
                 bestTimeText.text = "Agile Girl Best Time: " + bestTime.ToString();
                 resultsScreen.SetActive(true);
             }
-            else
+            else if(other.name == "ParkourMan")
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
@@ -364,7 +372,7 @@ public class PortalTeleport : MonoBehaviour
                 if (timeFromPlayer < parkour2BestTime)
                 {
                     bestTime = timeFromPlayer;
-                    PlayerPrefs.SetFloat("parkour1BestTime", timeFromPlayer);
+                    PlayerPrefs.SetFloat("parkour2BestTime", timeFromPlayer);
                 }
                 else
                 {

@@ -164,7 +164,7 @@ public class LevelSwitcherForPlayer : MonoBehaviour
                 }
                 else
                 {
-                    completeOrNot = "Not Complete";
+                    completeOrNot = "Not Complete.";
                 }
                 achievementText.text += item.achievementName + "\n" + item.achievementDescription + " - " + completeOrNot +"\n\n";
 
@@ -180,7 +180,7 @@ public class LevelSwitcherForPlayer : MonoBehaviour
                 }
                 else
                 {
-                    completeOrNot = "Not Complete";
+                    completeOrNot = "Not Complete.";
                 }
                 achievementText.text += item.achievementName + "\n" + item.achievementDescription + " - " + completeOrNot + "\n\n";
             }

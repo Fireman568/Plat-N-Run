@@ -68,28 +68,33 @@ public class AchievementChecker : MonoBehaviour
         level = scene.name;
         levelDone = false;
         
-        if (playerObj.activeSelf)
+        if(scene.name != "MainMenu")
         {
-            Debug.Log("Player should be being used");
-            player = playerObj.GetComponent<Player>();
-            playerActive = true;
+            if (playerObj.activeSelf)
+            {
+                Debug.Log("Player should be being used");
+                player = playerObj.GetComponent<Player>();
+                playerActive = true;
+            }
+            else if (bigBulkyObj.activeSelf)
+            {
+                player = bigBulkyObj.GetComponent<Player>();
+                bigActive = true;
+            }
+            else if (parkourMan.activeSelf)
+            {
+                player = parkourMan.GetComponent<Player>();
+                parkourActive = true;
+            }
+            else
+            {
+                player = agileQuickObj.GetComponent<Player>();
+                agileActive = true;
+            }
+            playerName = player.name;
         }
-        else if (bigBulkyObj.activeSelf)
-        {
-            player = bigBulkyObj.GetComponent<Player>();
-            bigActive = true;
-        }
-        else if (parkourMan.activeSelf)
-        {
-            player = parkourMan.GetComponent<Player>();
-            parkourActive = true;
-        }
-        else
-        {
-            player = agileQuickObj.GetComponent<Player>();
-            agileActive = true;
-        }
-        playerName = player.name;
+        
+        
         level1_0 = PlayerPrefs.GetInt("Level1_0") == 1 ? true : false;
         level1_1 = PlayerPrefs.GetInt("Level1_1") == 1 ? true : false;
         level1_2 = PlayerPrefs.GetInt("Level1_2") == 1 ? true : false;
@@ -118,6 +123,7 @@ public class AchievementChecker : MonoBehaviour
         {
             if(item.tag == "Level1_0" && level1_0)
             {
+                Debug.Log("the first thing in the first thing has been marked Complete");
                 item.completed = true;
                 item.notCompleted = false;
             }
@@ -400,28 +406,36 @@ public class AchievementChecker : MonoBehaviour
             }
             
         }
-        foreach (Achievement item in special)
-        {
-            if (item.notCompleted == true)
-            {
-                if (item.achievementType == Achievement.Types.SPECIAL)
-                {
-                    if (player.jumpAmount >= item.numOfJumpsThreshold)
-                    {
-                        item.completed = true;
-                        item.notCompleted = false;
-                        //item.notCompleted = false;
-                        achievementImage.SetActive(true);
-                        Debug.Log("Achievement image should be turne on");
-                        achievementImage.SendMessage("getAchievementInfo", item);
-                        achievementImage.SendMessage("showAchievement", true);
-                        PlayerPrefs.SetInt("Special_0", 1);
+        //foreach (Achievement item in special)
+        //{
+        //    if (item.notCompleted == true)
+        //    {
+        //        if (item.achievementType == Achievement.Types.SPECIAL)
+        //        {
+        //            try
+        //            {
+        //                if (player.jumpAmount >= item.numOfJumpsThreshold)
+        //                {
+        //                    item.completed = true;
+        //                    item.notCompleted = false;
+        //                    //item.notCompleted = false;
+        //                    achievementImage.SetActive(true);
+        //                    Debug.Log("Achievement image should be turne on");
+        //                    achievementImage.SendMessage("getAchievementInfo", item);
+        //                    achievementImage.SendMessage("showAchievement", true);
+        //                    PlayerPrefs.SetInt("Special_0", 1);
 
-                    }
-                }
-            }
+        //                }
+        //            }
+        //            catch
+        //            {
+        //                //Debug.Log("Dont worry about it, this to let the errors get caught when being used on the main menu");
+        //            }
+                    
+        //        }
+        //    }
 
-        }
+        //}
     }
     public void changeLevelBool()
     {
