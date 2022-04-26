@@ -154,22 +154,27 @@ public class LevelSwitcher : MonoBehaviour
 
     }
     
-    public void GoToLevel1()
+    public void GoToTutorial()
     {
-        //levelLoader.LoadLevel(sceneIndex);
         levelToGoTo = 1;
         goToCharacters();
     }
-    public void GoToLevel2()
+    public void GoToLevel1()
     {
         //levelLoader.LoadLevel(sceneIndex);
         levelToGoTo = 2;
         goToCharacters();
     }
-    public void GoToLevel3()
+    public void GoToLevel2()
     {
         //levelLoader.LoadLevel(sceneIndex);
         levelToGoTo = 3;
+        goToCharacters();
+    }
+    public void GoToLevel3()
+    {
+        //levelLoader.LoadLevel(sceneIndex);
+        levelToGoTo = 4;
         goToCharacters();
     }
 
@@ -204,6 +209,10 @@ public class LevelSwitcher : MonoBehaviour
     public void loadLevel()
     {
         levelLoader.LoadLevel(levelToGoTo);
+    }
+    public void loadTutorial(int sceneIndex)
+    {
+        levelLoader.LoadLevel(sceneIndex);
     }
     public void QuitTheGame()
     {
@@ -245,7 +254,7 @@ public class LevelSwitcher : MonoBehaviour
         mainMenu.SetActive(false);
         achievementsText.text = "";
 
-        foreach (Achievement item in achievements.level3Achievements)
+        foreach (Achievement item in achievements.level1Achievements)
         {
             if (item.completed)
             {
@@ -279,7 +288,7 @@ public class LevelSwitcher : MonoBehaviour
         }
         if (parkour0BestTime == 0)
         {
-            parkourGuyTxt.text = "Parkour Guy: NotCompleted";
+            parkourGuyTxt.text = "Parkour Guy: Not Completed";
         }
         levelText.text = "Level 1 Stats";
     }
@@ -288,7 +297,7 @@ public class LevelSwitcher : MonoBehaviour
     {
         achievementsText.text = "";
         
-        foreach (Achievement item in achievements.level3Achievements)
+        foreach (Achievement item in achievements.level1Achievements)
         {
             if (item.completed)
             {
@@ -320,14 +329,14 @@ public class LevelSwitcher : MonoBehaviour
         }
         if (parkour0BestTime == 0)
         {
-            parkourGuyTxt.text = "Parkour Guy: NotCompleted";
+            parkourGuyTxt.text = "Parkour Guy: Not Completed";
         }
         levelText.text = "Level 1 Stats";
     }
     public void switchToLevel2ForStats()
     {
         achievementsText.text = "";
-        foreach (Achievement item in achievements.level1Achievements)
+        foreach (Achievement item in achievements.level2Achievements)
         {
             if (item.completed)
             {
@@ -359,14 +368,14 @@ public class LevelSwitcher : MonoBehaviour
         }
         if (parkour1BestTime == 0)
         {
-            parkourGuyTxt.text = "Parkour Guy: NotCompleted";
+            parkourGuyTxt.text = "Parkour Guy: Not Completed";
         }
         levelText.text = "Level 2 Stats";
     }
     public void switchToLevel3ForStats()
     {
         achievementsText.text = "";
-        foreach (Achievement item in achievements.level2Achievements)
+        foreach (Achievement item in achievements.level3Achievements)
         {
             if (item.completed)
             {

@@ -185,6 +185,21 @@ public class LevelSwitcherForPlayer : MonoBehaviour
                 achievementText.text += item.achievementName + "\n" + item.achievementDescription + " - " + completeOrNot + "\n\n";
             }
         }
+        if(scene.name == "Level3")
+        {
+            foreach (Achievement item in achievements.level3Achievements)
+            {
+                if (item.completed)
+                {
+                    completeOrNot = "Complete!";
+                }
+                else
+                {
+                    completeOrNot = "Not Complete.";
+                }
+                achievementText.text += item.achievementName + "\n" + item.achievementDescription + " - " + completeOrNot + "\n\n";
+            }
+        }
     }
     public void QuitGame()
     {

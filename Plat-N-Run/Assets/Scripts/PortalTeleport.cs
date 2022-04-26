@@ -111,7 +111,11 @@ public class PortalTeleport : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log("I have been triggered by something entering me");
-        if (scene.name == "Tutorial")
+        if(scene.name == "Tutorial")
+        {
+            goBackToMainMenu();
+        }
+        if (scene.name == "Level1")
         {
             if (other.name == "Player")
             {
@@ -202,7 +206,7 @@ public class PortalTeleport : MonoBehaviour
                 resultsScreen.SetActive(true);
             }
         }
-        if (scene.name == "Level1")
+        if (scene.name == "Level2")
         {
             if (other.name == "Player")
             {
@@ -293,7 +297,7 @@ public class PortalTeleport : MonoBehaviour
                 resultsScreen.SetActive(true);
             }
         }
-        if(scene.name == "Level2")
+        if(scene.name == "Level3")
         {
             if (other.name == "Player")
             {
@@ -389,6 +393,10 @@ public class PortalTeleport : MonoBehaviour
     public void goToNextLevel(int sceneIndex)
     {
         levelLoad.LoadLevel(sceneIndex);
+    }
+    public void goBackToMainMenu()
+    {
+        levelLoad.LoadLevel(0);
     }
     public void restartTheLevel()
     {

@@ -152,7 +152,7 @@ MonoBehaviour:
   - achievementName: Level 2 Speedrunner
     achievementType: 0
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 90
@@ -165,7 +165,7 @@ MonoBehaviour:
   - achievementName: Fiscal
     achievementType: 1
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   - achievementName: Extra Fiscal
     achievementType: 2
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 0
     collectibleAmount: 2
     timeThreshold: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   - achievementName: Hate Death
     achievementType: 3
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 7
     collectibleAmount: 0
     timeThreshold: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   - achievementName: Player Pass 2
     achievementType: 4
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   - achievementName: Big Pass 2
     achievementType: 4
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
   - achievementName: Agile pass 2
     achievementType: 4
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   - achievementName: Parkour! 2
     achievementType: 4
     completed: 0
-    notCompleted: 0
+    notCompleted: 1
     deathThreshold: 0
     collectibleAmount: 0
     timeThreshold: 0
@@ -253,7 +253,85 @@ MonoBehaviour:
     deathAmount: 0
     numOfJumpsThreshold: 0
     numOfWallsThreshold: 0
-  level3Achievements: []
+  level3Achievements:
+  - achievementName: 3rd level speedrunner
+    achievementType: 0
+    completed: 0
+    notCompleted: 1
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 30
+    characterName: 
+    achievementDescription: Beat the level in under 30 seconds
+    tag: Level3_0
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementName: Thoroughly enjoy living
+    achievementType: 3
+    completed: 0
+    notCompleted: 1
+    deathThreshold: 5
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: 
+    achievementDescription: Finish level without dying more than 5 times
+    tag: Level3_1
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementName: Player Pass 3
+    achievementType: 4
+    completed: 0
+    notCompleted: 1
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: Player
+    achievementDescription: Complete the level with the Default guy
+    tag: Level3_2
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementName: Strong Pass 3
+    achievementType: 4
+    completed: 0
+    notCompleted: 1
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: BigBulkyMan
+    achievementDescription: Beat the level using Big Bulky Man
+    tag: Level3_3
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementName: Fast Pass 3
+    achievementType: 4
+    completed: 0
+    notCompleted: 1
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: AgileQuickGirl
+    achievementDescription: Beat the level with Agile Quick Girl
+    tag: Level3_4
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
+  - achievementName: Parkour! 3
+    achievementType: 4
+    completed: 0
+    notCompleted: 1
+    deathThreshold: 0
+    collectibleAmount: 0
+    timeThreshold: 0
+    characterName: ParkourMan
+    achievementDescription: Beat the level with Parkour Man
+    tag: Level3_5
+    deathAmount: 0
+    numOfJumpsThreshold: 0
+    numOfWallsThreshold: 0
   level4Achievements: []
   level5Achievements: []
   special:
@@ -304,6 +382,12 @@ MonoBehaviour:
   level2_5: 0
   level2_6: 0
   level2_7: 0
+  level3_0: 0
+  level3_1: 0
+  level3_2: 0
+  level3_3: 0
+  level3_4: 0
+  level3_5: 0
   special_0: 0
   level: Level1
   playerObj: {fileID: 0}

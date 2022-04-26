@@ -38,6 +38,14 @@ public class AchievementChecker : MonoBehaviour
     public bool level2_5;
     public bool level2_6;
     public bool level2_7;
+
+    public bool level3_0;
+    public bool level3_1;
+    public bool level3_2;
+    public bool level3_3;
+    public bool level3_4;
+    public bool level3_5;
+
     public bool special_0;
 
     //get the current scene to retrieve the scene name
@@ -103,6 +111,8 @@ public class AchievementChecker : MonoBehaviour
         level1_5 = PlayerPrefs.GetInt("Level1_5") == 1 ? true : false;
         level1_6 = PlayerPrefs.GetInt("Level1_6") == 1 ? true : false;
         level1_7 = PlayerPrefs.GetInt("Level1_7") == 1 ? true : false;
+
+
         level2_0 = PlayerPrefs.GetInt("Level2_0") == 1 ? true : false;
         level2_1 = PlayerPrefs.GetInt("Level2_1") == 1 ? true : false;
         level2_2 = PlayerPrefs.GetInt("Level2_2") == 1 ? true : false;
@@ -111,6 +121,14 @@ public class AchievementChecker : MonoBehaviour
         level2_5 = PlayerPrefs.GetInt("Level2_5") == 1 ? true : false;
         level2_6 = PlayerPrefs.GetInt("Level2_6") == 1 ? true : false;
         level2_7 = PlayerPrefs.GetInt("Level2_7") == 1 ? true : false;
+
+        level3_0 = PlayerPrefs.GetInt("Level3_0") == 1 ? true : false;
+        level3_1 = PlayerPrefs.GetInt("Level3_1") == 1 ? true : false;
+        level3_2 = PlayerPrefs.GetInt("Level3_2") == 1 ? true : false;
+        level3_3 = PlayerPrefs.GetInt("Level3_3") == 1 ? true : false;
+        level3_4 = PlayerPrefs.GetInt("Level3_4") == 1 ? true : false;
+        level3_5 = PlayerPrefs.GetInt("Level3_5") == 1 ? true : false;
+
         special_0 = PlayerPrefs.GetInt("Special_0") == 1 ? true : false;
         
         //level1Achievements = new List<Achievement>();
@@ -206,6 +224,39 @@ public class AchievementChecker : MonoBehaviour
                 item.notCompleted = false;
             }
         }
+        foreach(Achievement item in level3Achievements)
+        {
+            if (item.tag == "Level3_0" && level3_0)
+            {
+                item.completed = true;
+                item.notCompleted = false;
+            }
+            if (item.tag == "Level3_1" && level3_1)
+            {
+                item.completed = true;
+                item.notCompleted = false;
+            }
+            if (item.tag == "Level3_2" && level3_2)
+            {
+                item.completed = true;
+                item.notCompleted = false;
+            }
+            if (item.tag == "Level3_3" && level3_3)
+            {
+                item.completed = true;
+                item.notCompleted = false;
+            }
+            if (item.tag == "Level3_4" && level3_4)
+            {
+                item.completed = true;
+                item.notCompleted = false;
+            }
+            if (item.tag == "Level3_5" && level3_5)
+            {
+                item.completed = true;
+                item.notCompleted = false;
+            }
+        }
         foreach (Achievement item in special)
         {
             if (item.tag == "Special_0" && special_0)
@@ -254,7 +305,7 @@ public class AchievementChecker : MonoBehaviour
                             achievementImage.SendMessage("getAchievementInfo", item);
                             achievementImage.SendMessage("showAchievement", true);
                             PlayerPrefs.SetInt("Level1_1", 1);
-                            
+
                         }
                     }
                     else if (item.achievementType == Achievement.Types.ALL_COLLECTIBLE)
@@ -267,7 +318,7 @@ public class AchievementChecker : MonoBehaviour
                             achievementImage.SendMessage("getAchievementInfo", item);
                             achievementImage.SendMessage("showAchievement", true);
                             PlayerPrefs.SetInt("Level1_2", 1);
-                            
+
                         }
                     }
                     else if (item.achievementType == Achievement.Types.UNDER_DEATH && levelDone == true)
@@ -280,9 +331,9 @@ public class AchievementChecker : MonoBehaviour
                             achievementImage.SetActive(true);
                             achievementImage.SendMessage("getAchievementInfo", item);
                             achievementImage.SendMessage("showAchievement", true);
-                            
+
                             PlayerPrefs.SetInt("Level1_3", 1);
-                           
+
                         }
                     }
                     else if (item.achievementType == Achievement.Types.CHARACTER_PASS && levelDone == true)
@@ -307,20 +358,20 @@ public class AchievementChecker : MonoBehaviour
                             }
                             item.completed = true;
                             item.notCompleted = false;
-                            
+
                         }
                     }
 
                 }
 
             }
-            
+
         }
-        if(level == "Level2")
+        if (level == "Level2")
         {
-            foreach(Achievement item in level2Achievements)
+            foreach (Achievement item in level2Achievements)
             {
-                if(item.notCompleted == true)
+                if (item.notCompleted == true)
                 {
                     if (item.achievementType == Achievement.Types.TIME && levelDone == true)
                     {
@@ -404,38 +455,102 @@ public class AchievementChecker : MonoBehaviour
                     }
                 }
             }
-            
+
+           
+            //foreach (Achievement item in special)
+            //{
+            //    if (item.notCompleted == true)
+            //    {
+            //        if (item.achievementType == Achievement.Types.SPECIAL)
+            //        {
+            //            try
+            //            {
+            //                if (player.jumpAmount >= item.numOfJumpsThreshold)
+            //                {
+            //                    item.completed = true;
+            //                    item.notCompleted = false;
+            //                    //item.notCompleted = false;
+            //                    achievementImage.SetActive(true);
+            //                    Debug.Log("Achievement image should be turne on");
+            //                    achievementImage.SendMessage("getAchievementInfo", item);
+            //                    achievementImage.SendMessage("showAchievement", true);
+            //                    PlayerPrefs.SetInt("Special_0", 1);
+
+            //                }
+            //            }
+            //            catch
+            //            {
+            //                //Debug.Log("Dont worry about it, this to let the errors get caught when being used on the main menu");
+            //            }
+
+            //        }
+            //    }
+
+            //}
         }
-        //foreach (Achievement item in special)
-        //{
-        //    if (item.notCompleted == true)
-        //    {
-        //        if (item.achievementType == Achievement.Types.SPECIAL)
-        //        {
-        //            try
-        //            {
-        //                if (player.jumpAmount >= item.numOfJumpsThreshold)
-        //                {
-        //                    item.completed = true;
-        //                    item.notCompleted = false;
-        //                    //item.notCompleted = false;
-        //                    achievementImage.SetActive(true);
-        //                    Debug.Log("Achievement image should be turne on");
-        //                    achievementImage.SendMessage("getAchievementInfo", item);
-        //                    achievementImage.SendMessage("showAchievement", true);
-        //                    PlayerPrefs.SetInt("Special_0", 1);
+        if (level == "Level3")
+        {
+            foreach (Achievement item in level3Achievements)
+            {
+                if (item.notCompleted == true)
+                {
+                    if (item.achievementType == Achievement.Types.TIME && levelDone == true)
+                    {
 
-        //                }
-        //            }
-        //            catch
-        //            {
-        //                //Debug.Log("Dont worry about it, this to let the errors get caught when being used on the main menu");
-        //            }
-                    
-        //        }
-        //    }
+                        if (player.levelTime < item.timeThreshold)
+                        {
+                            item.completed = true;
+                            item.notCompleted = false;
+                            achievementImage.SetActive(true);
+                            achievementImage.SendMessage("getAchievementInfo", item);
+                            achievementImage.SendMessage("showAchievement", true);
+                            PlayerPrefs.SetInt("Level3_0", 1);
+                        }
+                    }
+                    else if (item.achievementType == Achievement.Types.UNDER_DEATH && levelDone == true)
+                    {
 
-        //}
+                        if (player.deathAmount < item.deathThreshold)
+                        {
+                            item.completed = true;
+                            item.notCompleted = false;
+                            achievementImage.SetActive(true);
+                            achievementImage.SendMessage("getAchievementInfo", item);
+                            achievementImage.SendMessage("showAchievement", true);
+
+                            PlayerPrefs.SetInt("Level3_1", 1);
+
+                        }
+                    }
+                    else if (item.achievementType == Achievement.Types.CHARACTER_PASS && levelDone == true)
+                    {
+                        if (item.characterName == playerName)
+                        {
+                            if (playerName == "Player")
+                            {
+                                PlayerPrefs.SetInt("Level3_2", 1);
+                            }
+                            else if (playerName == "BigBulkyMan")
+                            {
+                                PlayerPrefs.SetInt("Level3_3", 1);
+                            }
+                            else if (playerName == "AgileQuickGirl")
+                            {
+                                PlayerPrefs.SetInt("Level3_4", 1);
+                            }
+                            else
+                            {
+                                PlayerPrefs.SetInt("Level3_5", 1);
+                            }
+                            item.completed = true;
+                            item.notCompleted = false;
+
+                        }
+                    }
+                }
+            }
+
+        }
     }
     public void changeLevelBool()
     {
